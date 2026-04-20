@@ -78,3 +78,36 @@ Single hard break at **`max-width: 640px`** — header switches to column, nav w
 - No mobile-menu pattern — relies on wrap; breaks past ~5 nav links
 - No utility classes beyond `.italic`
 - No `prefers-color-scheme` handling
+
+## 6. New components (constellation experiment — 2026-04-19)
+
+Decorative inline SVG constellations reinforce each project's identity. Every project gets one, drawn inline with `viewBox="0 0 220 140"`.
+
+### 6.1 `.constellation-grid` — home card list
+3-column grid (`repeat(3, 1fr)`, gap `clamp(2rem, 4vw, 3.5rem)`) that collapses to 1-column at ≤820px. Each `<li>` holds one `<a>` → project page, containing: italic serif number + SVG + `h3` + summary + small-caps caption.
+
+Tokens used: `--serif`, `--sans`, `--ink`/`--ink-soft`/`--ink-muted`, `--accent` (hover tint), `--dur-med` + `--ease`, `--star-body`/`--star-line`/`--star-anchor`.
+
+States:
+- Hover (gated by `@media (hover: hover)`) — lift `translateY(-3px)`, lines → `--accent` at 0.7 opacity, non-anchor stars → `--accent`, glow opacity 0.16 → 0.28
+- Focus-visible — same visual treatment as hover plus 2px focus ring
+- `prefers-reduced-motion` — transform suppressed, tint retained
+- Touch devices — no hover state (prevents stuck highlight)
+
+### 6.2 `.feature-constellation` — project page hero accent
+Same SVG family at slightly larger star radii (`r=2` non-anchor, `r=3.5` anchor). Sits beside `.project-hero-text` in a `grid-template-columns: minmax(0, 1fr) 200px` layout; stacks ≤720px. No hover — hero is static.
+
+### 6.3 The three shapes
+- **01 Instructions — "The arrow"** — 6 stars, ascending chevron with branch
+- **02 Resume & Cover Letter — "The frame"** — 5-point asymmetric pentagon
+- **03 Proposal — "The keystone"** — 7 stars, arc with center keystone
+
+### 6.4 Accessibility
+- Each SVG is decorative — `aria-hidden="true"` + `focusable="false"`
+- Parent `<a>` carries meaning via `aria-label="Project NN: Title"`
+- Caption span uses `aria-hidden="true"` (purely decorative flourish)
+- Constellation stars distinguished from ambient via: larger radius, `filter: drop-shadow()` halo, and connecting lines
+- Reduced-motion: hover transform disabled
+
+### 6.5 Extending
+To add a 4th constellation: copy one `<li>` block in `index.html`, redraw the SVG inside `viewBox="0 0 220 140"` with ≤7 points and one `.anchor` star, update the `<h3>`, `<p>`, `.caption`, and the matching `project-4.html` feature SVG. Update `.constellation-grid` to `repeat(auto-fit, minmax(220px, 1fr))` if you want it to wrap gracefully.

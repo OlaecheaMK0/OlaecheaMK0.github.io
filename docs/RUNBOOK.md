@@ -54,3 +54,34 @@ Site: `https://olaecheamk0.github.io` · Source: `~/Desktop/portfolio/`
 4. Verify repo is **Public** (Settings → General → Danger Zone).
 
 **Fix:** If private, flip to public. Otherwise send the direct live URL.
+
+## 6. Constellation-specific issues
+
+### 6a. SVG doesn't render
+**Symptoms:** Blank area where the constellation should be; no fallback text visible; DevTools shows a CSP violation for inline SVG.
+
+**Triage:**
+1. DevTools → Elements: confirm the `<svg>` node exists in the DOM.
+2. Network tab: is an external SVG 404ing, or is inline markup being stripped?
+3. Console: look for CSP `violated-directive` entries.
+
+**Fix:** The site is static — no CSP is set by GitHub Pages, so inline SVG renders by default. If the issue is an ancient browser, the text labels (`<h3>` + blurb) still carry all the meaning; the constellation is purely decorative.
+
+### 6b. Hover state stuck on touch devices
+**Symptoms:** On iPad or phone, a card stays lifted / highlighted after tap.
+
+**Triage:** Already guarded — hover rules live inside `@media (hover: hover) and (pointer: fine)`. If you see a stuck state, confirm the media query survived any CSS edit.
+
+### 6c. Reverting the constellation concept
+**Symptoms:** You decide the concept is too gimmicky.
+
+**Fix:**
+```sh
+git -C /Users/co/Desktop/portfolio reset --hard 8dc68fa
+```
+Commit `8dc68fa` ("baseline: pre-constellation experiment") is the known-good anchor.
+
+### 6d. Stars on Retina look too faint or too bright
+**Symptoms:** Constellation stars either pop too aggressively or disappear into the background depending on display.
+
+**Fix:** Adjust `filter: drop-shadow()` blur radius in `css/style.css` (`.constellation .stars circle`, `.feature-constellation .stars circle`). Lower blur = crisper / less glow. Default is `1.4–1.6px`; dial to `0.8px` if too soft or `2.2px` if too hard.
