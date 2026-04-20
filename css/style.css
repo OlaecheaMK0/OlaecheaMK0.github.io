@@ -431,6 +431,9 @@ h3 {
 
 /* Non-current stars: goo metaball on hover, identical vibe to home */
 .sky-mini .sky-goo-link { cursor: pointer; }
+/* Dim the filtered group so the merged blob is a soft wash (mirrors home
+   where .sky-goo has its own opacity applied after the filter). */
+.sky-mini g[filter] { opacity: 0.5; }
 .sky-mini .sky-goo-link .bubble,
 .sky-mini .sky-goo-link .pill {
   fill: transparent;
