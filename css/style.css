@@ -90,7 +90,6 @@ body {
     radial-gradient(ellipse at 50% 120%, #060a18 0%, var(--bg-deep) 60%),
     var(--bg);
   background-attachment: fixed;
-  overscroll-behavior-y: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -399,8 +398,7 @@ h3 {
   .sky-sub { font-size: var(--step-0); }
   .sky-field { aspect-ratio: 1000 / 680; margin-top: 0.75rem; }
   .sky-goo { width: 200px; height: 120px; }
-  .sky-label, .sky-pill { font-size: var(--step-0); padding: 0.7rem 0.85rem; white-space: normal; text-align: center; max-width: 44vw; }
-  .sky-label { opacity: 1; }
+  .sky-pill { font-size: var(--step-0); padding: 0.7rem 0.85rem; white-space: normal; text-align: center; max-width: 44vw; }
   @keyframes mast-settle {
     0%   { transform: translateY(15svh) scale(1.6); letter-spacing: 0; }
     100% { transform: translateY(0) scale(1); letter-spacing: -0.015em; }

@@ -10,7 +10,7 @@
   <script>try{if(document.referrer&&new URL(document.referrer).origin===location.origin){document.documentElement.classList.add('nav-internal');var h=function(p){return p==='/'||p.endsWith('/index.html')};if(!h(new URL(document.referrer).pathname)&&!h(location.pathname))document.documentElement.classList.add('nav-lateral')}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" />
   <link rel="stylesheet" href="css/style.css" />
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
@@ -22,8 +22,8 @@
     <a class="brand" href="index.html">Carlos Olaechea</a>
   </header>
 
-  <section class="sky-mini" aria-label="Portfolio map">
-    <svg viewBox="0 0 1000 520" role="img">
+  <nav class="sky-mini" aria-label="Portfolio map">
+    <svg viewBox="0 0 1000 520">
     <defs>
       <filter id="mini-goo" x="-20%" y="-20%" width="140%" height="140%">
         <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
@@ -54,14 +54,14 @@
       <circle class="halo current" r="20"/>
       <circle class="anchor current" r="4.2"/>
     </g>
-    <text class="label current label-resume" x="240" y="448" aria-hidden="true">Resume &amp; Cover Letter</text>
+    <text class="label current" x="240" y="448" aria-hidden="true">Resume &amp; Cover Letter</text>
     <a href="about.html" aria-label="About" class="sky-goo-link">
       <g filter="url(#mini-goo)">
         <circle class="bubble" cx="215" cy="135" r="18"/>
         <rect class="pill" x="145" y="73" width="140" height="52" rx="26"/>
       </g>
       <circle class="anchor" cx="215" cy="135" r="3.4"/>
-      <text class="label label-about" x="215" y="106">About</text>
+      <text class="label" x="215" y="106" aria-hidden="true">About</text>
     </a>
     <a href="project-1.html" aria-label="Instructions" class="sky-goo-link">
       <g filter="url(#mini-goo)">
@@ -69,7 +69,7 @@
         <rect class="pill" x="645" y="53" width="180" height="52" rx="26"/>
       </g>
       <circle class="anchor" cx="735" cy="115" r="3.4"/>
-      <text class="label label-instructions" x="735" y="86">Instructions</text>
+      <text class="label" x="735" y="86" aria-hidden="true">Instructions</text>
     </a>
     <a href="project-3.html" aria-label="Proposal" class="sky-goo-link">
       <g filter="url(#mini-goo)">
@@ -77,10 +77,10 @@
         <rect class="pill" x="710" y="430" width="160" height="52" rx="26"/>
       </g>
       <circle class="anchor" cx="790" cy="420" r="3.4"/>
-      <text class="label label-proposal" x="790" y="463">Proposal</text>
+      <text class="label" x="790" y="463" aria-hidden="true">Proposal</text>
     </a>
     </svg>
-  </section>
+  </nav>
 
   <main id="main">
     <section class="project-hero">

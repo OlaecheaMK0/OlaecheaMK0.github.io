@@ -17,9 +17,10 @@
     let stars = [];
     let dpr = 1;
     let builtW = 0;
+    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
     function build() {
       const w = window.innerWidth;
-      const h = Math.max(window.innerHeight, window.screen?.height || 0);
+      const h = isTouch ? Math.max(window.innerHeight, window.screen?.height || 0) : window.innerHeight;
       builtW = w;
       dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = w * dpr;
