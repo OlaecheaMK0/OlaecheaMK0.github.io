@@ -33,7 +33,11 @@
 .italic { font-style: italic; }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none;
+  background: var(--bg);
+}
 body {
   margin: 0;
   min-height: 100svh;
@@ -46,9 +50,13 @@ body {
     radial-gradient(ellipse at 50% 120%, #060a18 0%, var(--bg-deep) 60%),
     var(--bg);
   background-attachment: fixed;
+  overscroll-behavior-y: none;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+}
+@media (hover: none) and (pointer: coarse) {
+  body { background-attachment: scroll; }
 }
 
 #stars {
@@ -292,6 +300,8 @@ h3 {
   transform: translate(-50%, -50%);
   filter: url(#goo);
   pointer-events: none;
+  opacity: 0.48;
+  transition: opacity 200ms ease;
   will-change: filter;
 }
 .sky-bubble {
@@ -335,9 +345,11 @@ h3 {
 }
 .sky-link.reverse .sky-pill { top: auto; bottom: calc(50% + 20px); }
 .sky-link.reverse .sky-label { top: auto; bottom: 20px; }
+.sky-link:focus-visible { outline: none; }
 .sky-link:focus-visible .sky-bubble,
 .sky-link:focus-visible .sky-pill {
   background: var(--hover-bg);
+  box-shadow: 0 0 0 2px var(--accent);
 }
 .sky-link:focus-visible .sky-label { opacity: 1; color: var(--ink); }
 @media (hover: hover) and (pointer: fine) {
@@ -345,10 +357,6 @@ h3 {
   .sky-link:hover .sky-pill { background: var(--hover-bg); }
   .sky-link:hover .sky-label { opacity: 1; color: var(--ink); }
 }
-.sky-link:focus-visible { outline: none; }
-.sky-link:focus-visible .sky-bubble,
-.sky-link:focus-visible .sky-pill { box-shadow: 0 0 0 2px var(--accent); }
-.sky-goo { opacity: 0.48; transition: opacity 200ms ease; }
 
 /* Mobile — compress the sky */
 @media (max-width: 720px) {

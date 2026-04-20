@@ -16,9 +16,11 @@
     const STAR_DENSITY = 0.00018;
     let stars = [];
     let dpr = 1;
+    let builtW = 0;
     function build() {
       const w = window.innerWidth;
-      const h = window.innerHeight;
+      const h = Math.max(window.innerHeight, window.screen?.height || 0);
+      builtW = w;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = w * dpr;
       canvas.height = h * dpr;
@@ -63,6 +65,7 @@
     }
     let resizeTimer;
     window.addEventListener('resize', () => {
+      if (window.innerWidth === builtW) return;
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(build, 150);
     });
