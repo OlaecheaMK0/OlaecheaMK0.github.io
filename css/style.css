@@ -222,8 +222,8 @@ h2 + .section-intro { margin-top: -1rem; }
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem);
-  gap: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(0.75rem, 2vw, 1.5rem) clamp(1.25rem, 3vw, 2.5rem);
+  gap: 0;
 }
 
 /* Masthead — animates from "hero" state to "title" state on load */
@@ -231,18 +231,18 @@ h2 + .section-intro { margin-top: -1rem; }
   text-align: center;
   max-width: 44rem;
   margin: 0 auto;
-  padding-top: clamp(1rem, 3vw, 2rem);
+  padding-top: 0;
   transform-origin: top center;
-  animation: mast-settle 1500ms cubic-bezier(0.2, 0.75, 0.25, 1) 120ms both;
+  animation: mast-settle 1800ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
 }
-.sky-mast .eyebrow { display: inline-block; }
+.sky-mast .eyebrow { display: inline-block; margin-bottom: 0.25rem; }
 .sky-name {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: var(--step-4);
+  font-size: var(--step-3);
   line-height: 1;
   letter-spacing: -0.015em;
-  margin: 0.5rem 0 1rem;
+  margin: 0.25rem 0 0.5rem;
   color: var(--ink);
   text-wrap: balance;
 }
@@ -251,16 +251,15 @@ h2 + .section-intro { margin-top: -1rem; }
   font-family: var(--serif);
   font-style: italic;
   color: var(--ink-soft);
-  font-size: var(--step-1);
+  font-size: var(--step-0);
   line-height: 1.45;
   max-width: 36ch;
   margin: 0 auto;
 }
 
 @keyframes mast-settle {
-  0%   { transform: scale(1.55); letter-spacing: 0; }
-  60%  { transform: scale(1.12); }
-  100% { transform: scale(1); letter-spacing: -0.015em; }
+  0%   { transform: translateY(22vh) scale(2.0); letter-spacing: 0; }
+  100% { transform: translateY(0) scale(1); letter-spacing: -0.015em; }
 }
 
 /* Sky field — container for the big constellation + hit overlays */
@@ -269,7 +268,8 @@ h2 + .section-intro { margin-top: -1rem; }
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  align-self: center;
+  align-self: start;
+  margin-top: clamp(0.5rem, 2vh, 1.5rem);
   aspect-ratio: 1000 / 520;
 }
 .sky-svg {
@@ -280,7 +280,7 @@ h2 + .section-intro { margin-top: -1rem; }
   overflow: visible;
   transform-origin: center center;
   opacity: 0;
-  animation: sky-fade 1400ms cubic-bezier(0.2, 0.75, 0.25, 1) 500ms forwards;
+  animation: sky-fade 1300ms cubic-bezier(0.22, 1, 0.36, 1) 400ms forwards;
 }
 .sky-lines {
   stroke: var(--star-line);
@@ -289,9 +289,9 @@ h2 + .section-intro { margin-top: -1rem; }
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  transition: stroke var(--dur-med) var(--ease), stroke-opacity var(--dur-med) var(--ease);
+  transition: stroke 140ms var(--ease), stroke-opacity 140ms var(--ease);
 }
-.sky-stars circle { transition: fill var(--dur-med) var(--ease), r var(--dur-med) var(--ease); }
+.sky-stars circle { transition: fill 120ms var(--ease); }
 .sky-stars .dec {
   fill: var(--star-body);
   opacity: 0.85;
@@ -305,24 +305,23 @@ h2 + .section-intro { margin-top: -1rem; }
 .sky-stars .halo {
   fill: var(--star-anchor);
   opacity: 0.12;
-  transition: opacity var(--dur-med) var(--ease), r var(--dur-med) var(--ease);
+  transition: opacity 140ms var(--ease);
 }
 .sky-stars .anchor.active {
   fill: var(--accent);
-  r: 4.2;
 }
-.sky-stars .halo.active { opacity: 0.34; r: 18; }
+.sky-stars .halo.active { opacity: 0.38; }
 .sky-svg:has(.anchor.active) .sky-lines {
   stroke: var(--accent);
-  stroke-opacity: 0.7;
+  stroke-opacity: 0.72;
 }
 
 @keyframes sky-fade {
-  0%   { opacity: 0; transform: scale(0.98); }
-  100% { opacity: 1; transform: scale(1); }
+  0%   { opacity: 0; transform: translateY(12px) scale(0.99); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Sky nav — HTML overlay for hitboxes + labels */
+/* Sky nav — HTML overlay: each <a> IS the 44x44 hitbox, centered on its star */
 .sky-nav {
   position: absolute;
   inset: 0;
@@ -332,57 +331,42 @@ h2 + .section-intro { margin-top: -1rem; }
   position: absolute;
   left: var(--x);
   top: var(--y);
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.55rem;
-  text-decoration: none;
-  color: var(--ink);
-  padding: 0.35rem;
-  pointer-events: auto;
-  opacity: 0;
-  animation: sky-fade 900ms cubic-bezier(0.2, 0.75, 0.25, 1) 1400ms forwards;
-}
-.sky-link.reverse { flex-direction: column-reverse; }
-.sky-hit {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  display: block;
-  position: relative;
-}
-.sky-hit::after {
-  content: "";
-  position: absolute;
-  inset: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: var(--accent);
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: var(--ink);
+  pointer-events: auto;
   opacity: 0;
-  transition: inset var(--dur-med) var(--ease), width var(--dur-med) var(--ease), height var(--dur-med) var(--ease), opacity var(--dur-med) var(--ease);
+  animation: sky-fade 800ms cubic-bezier(0.22, 1, 0.36, 1) 1100ms forwards;
+  transition: background 120ms var(--ease);
 }
-.sky-link:is(:hover, :focus-visible) .sky-hit::after {
-  inset: 25%;
-  width: 50%;
-  height: 50%;
-  opacity: 0.14;
+.sky-link:is(:hover, :focus-visible) {
+  background: rgba(143, 176, 255, 0.12);
 }
 .sky-label {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.3rem);
+  transform: translateX(-50%);
+  white-space: nowrap;
   font-family: var(--serif);
   font-size: var(--step-1);
   letter-spacing: 0.01em;
   color: var(--ink-soft);
   opacity: 0.82;
-  transition: opacity var(--dur-med) var(--ease), color var(--dur-med) var(--ease);
-  white-space: nowrap;
+  transition: opacity 120ms var(--ease), color 120ms var(--ease);
+  pointer-events: none;
+}
+.sky-link.reverse .sky-label {
+  top: auto;
+  bottom: calc(100% + 0.3rem);
 }
 .sky-link:is(:hover, :focus-visible) .sky-label { opacity: 1; color: var(--ink); }
 .sky-link:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
-  border-radius: 6px;
 }
 
 .sky-foot {
@@ -393,22 +377,19 @@ h2 + .section-intro { margin-top: -1rem; }
   text-transform: uppercase;
   margin: 0;
   opacity: 0;
-  animation: sky-fade 900ms cubic-bezier(0.2, 0.75, 0.25, 1) 1600ms forwards;
+  animation: sky-fade 800ms cubic-bezier(0.22, 1, 0.36, 1) 1300ms forwards;
 }
 .sky-foot p { margin: 0; }
 
-/* Mobile — compress the sky or fall back to stack */
+/* Mobile — compress the sky */
 @media (max-width: 720px) {
-  .sky { padding: 1.5rem 1rem; gap: 1.25rem; }
+  .sky { padding: 0.75rem 1rem; }
   .sky-sub { font-size: var(--step-0); }
-  .sky-field { aspect-ratio: 1000 / 680; }
-  .sky-link { padding: 0.25rem; }
+  .sky-field { aspect-ratio: 1000 / 680; margin-top: 0.75rem; }
   .sky-label { font-size: var(--step-0); opacity: 1; }
-  .sky-hit { width: 44px; height: 44px; }
   @keyframes mast-settle {
-    0%   { transform: scale(1.25); letter-spacing: 0; }
-    60%  { transform: scale(1.08); }
-    100% { transform: scale(1); letter-spacing: -0.015em; }
+    0%   { transform: translateY(15vh) scale(1.6); letter-spacing: 0; }
+    100% { transform: translateY(0) scale(1); letter-spacing: -0.015em; }
   }
 }
 
@@ -419,6 +400,7 @@ h2 + .section-intro { margin-top: -1rem; }
     transform: none !important;
     letter-spacing: -0.015em !important;
   }
+  .sky-link { transform: translate(-50%, -50%) !important; }
 }
 
 /* Feature constellation (project page hero) ------------------------ */
