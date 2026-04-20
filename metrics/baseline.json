@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-04-20T01:13:28Z",
+  "commit": "7d9aa21",
+  "totals": {
+  "safety": { "passed": 10, "total": 10, "pct": 100.0 },
+  "robustness": { "passed": 8, "total": 8, "pct": 100.0 },
+  "scores": {
+  "files": {
+  "index.html": { "raw": 4815, "gz": 1509 },
+  "about.html": { "raw": 3557, "gz": 1611 },
+  "project-1.html": { "raw": 3486, "gz": 1559 },
+  "project-2.html": { "raw": 3367, "gz": 1469 },
+  "project-3.html": { "raw": 3457, "gz": 1525 },
+  "css/style.css": { "raw": 16362, "gz": 4320 },
+  "js/stars.js": { "raw": 3499, "gz": 1528 },
+  "js/sky.js": { "raw": 1158, "gz": 522 }
+}
