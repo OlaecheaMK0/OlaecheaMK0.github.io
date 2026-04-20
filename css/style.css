@@ -212,6 +212,174 @@ h2 + .section-intro { margin-top: -1rem; }
 .prose a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent-dim); text-underline-offset: 0.22em; }
 .prose a:hover { text-decoration-color: var(--accent); }
 
+/* Welcome map (home) ----------------------------------------------- */
+.is-welcome { overflow: hidden; }
+.welcome {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  padding: clamp(2rem, 5vw, 4rem);
+  gap: clamp(1rem, 3vw, 2rem);
+}
+.welcome-mast {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) 0 0;
+}
+.welcome-mast .eyebrow { display: inline-block; }
+.welcome-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 1.8rem + 5.5vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin: 0.5rem 0 1.25rem;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.welcome-name .italic { font-style: italic; }
+.welcome-sub {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  line-height: 1.45;
+  max-width: 36ch;
+  margin: 0 auto 1.25rem;
+}
+.welcome-hint {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.map-nav {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-self: center;
+}
+.map-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding: 0.75rem;
+  border-radius: 4px;
+  position: relative;
+  transition: transform var(--dur-med) var(--ease);
+}
+.map-glyph {
+  width: clamp(90px, 12vw, 140px);
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.map-glyph .lines {
+  stroke: var(--star-line);
+  stroke-opacity: 0.42;
+  stroke-width: 0.85;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: stroke var(--dur-med) var(--ease), stroke-opacity var(--dur-med) var(--ease);
+}
+.map-glyph .stars circle {
+  fill: var(--star-body);
+  filter: drop-shadow(0 0 1.4px rgba(255,255,255,0.55));
+  transition: fill var(--dur-med) var(--ease);
+}
+.map-glyph .stars .anchor {
+  fill: var(--star-anchor);
+  filter: drop-shadow(0 0 2.6px rgba(255,255,255,0.7));
+}
+.map-glyph .glow {
+  fill: var(--star-anchor);
+  opacity: 0.14;
+  transition: opacity var(--dur-med) var(--ease);
+}
+.map-label {
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  opacity: 0.35;
+  transition: opacity var(--dur-med) var(--ease), color var(--dur-med) var(--ease);
+  text-align: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .map-node:hover { transform: translateY(-3px); }
+  .map-node:hover .map-label { opacity: 1; color: var(--ink); }
+  .map-node:hover .lines { stroke: var(--accent); stroke-opacity: 0.75; }
+  .map-node:hover .stars circle { fill: var(--accent); }
+  .map-node:hover .stars .anchor { fill: var(--star-anchor); }
+  .map-node:hover .glow { opacity: 0.28; }
+}
+.map-node:focus-visible {
+  transform: translateY(-3px);
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.map-node:focus-visible .map-label { opacity: 1; color: var(--ink); }
+.map-node:focus-visible .lines { stroke: var(--accent); stroke-opacity: 0.75; }
+.map-node:focus-visible .stars circle { fill: var(--accent); }
+.map-node:focus-visible .stars .anchor { fill: var(--star-anchor); }
+.map-node:focus-visible .glow { opacity: 0.28; }
+
+/* Scatter positions — desktop/tablet */
+@media (min-width: 721px) {
+  .map-nav {
+    height: clamp(320px, 42vh, 480px);
+  }
+  .map-node {
+    position: absolute;
+    width: auto;
+  }
+  .pos-about        { top: 4%;   left: 6%; }
+  .pos-instructions { top: 12%;  right: 4%; }
+  .pos-resume       { bottom: 8%;  left: 10%; }
+  .pos-proposal     { bottom: 2%;  right: 8%; }
+}
+
+/* Mobile — stack the nodes, keep label visible */
+@media (max-width: 720px) {
+  .welcome { padding: 2rem 1.25rem; }
+  .map-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+    justify-items: center;
+    padding: 1.5rem 0;
+  }
+  .map-label { opacity: 0.75; }
+  .map-glyph { width: clamp(72px, 22vw, 110px); }
+}
+
+.welcome-foot {
+  text-align: center;
+  color: var(--ink-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.welcome-foot p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .map-node:hover, .map-node:focus-visible { transform: none; }
+}
+
 /* Constellation grid (home) ---------------------------------------- */
 .constellation-grid {
   list-style: none;
