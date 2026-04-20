@@ -376,9 +376,9 @@ h2 + .section-intro { margin-top: -1rem; }
 .sky-pill {
   position: absolute;
   left: 50%;
-  top: calc(50% + 22px + 0.12rem);
+  top: calc(50% + 20px);
   transform: translateX(-50%);
-  padding: 0.22rem 0.75rem;
+  padding: 0.3rem 0.85rem;
   border-radius: 100px;
   font-family: var(--serif);
   font-size: var(--step-1);
@@ -386,16 +386,20 @@ h2 + .section-intro { margin-top: -1rem; }
   white-space: nowrap;
   color: transparent;
   background: transparent;
-  transition: background 160ms var(--ease);
+  transition: background 200ms var(--ease);
   pointer-events: auto;
 }
 .sky-link.reverse .sky-pill {
   top: auto;
-  bottom: calc(50% + 22px + 0.12rem);
+  bottom: calc(50% + 20px);
 }
 .sky-link:is(:hover, :focus-visible) .sky-bubble,
 .sky-link:is(:hover, :focus-visible) .sky-pill {
-  background: rgba(143, 176, 255, 0.55);
+  background: rgba(175, 200, 245, 0.55);
+}
+.sky-goo {
+  opacity: 0.55;
+  transition: opacity 200ms var(--ease);
 }
 /* Actual visible label — positioned relative to <a> (star coord), no filter */
 .sky-label {
