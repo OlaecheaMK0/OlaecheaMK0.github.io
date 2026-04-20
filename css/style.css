@@ -391,18 +391,6 @@ h3 {
 .sky-link:focus-visible .sky-pill { box-shadow: 0 0 0 2px var(--accent); }
 .sky-goo { opacity: 0.48; transition: opacity 200ms var(--ease); }
 
-.sky-foot {
-  text-align: center;
-  color: var(--ink-muted);
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin: 0;
-  opacity: 0;
-  animation: sky-fade 800ms cubic-bezier(0.22, 1, 0.36, 1) 1300ms forwards;
-}
-.sky-foot p { margin: 0; }
-
 /* Mobile — compress the sky */
 @media (max-width: 720px) {
   .sky { padding: 0.75rem 1rem; }
@@ -428,13 +416,69 @@ h3 {
 }
 
 
-.project-hero.has-feature {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 200px;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
+/* Sub-page constellation map — same shape as home, current star lit */
+.sky-mini {
+  max-width: 720px;
+  margin: 1rem auto 1.25rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
 }
-.feature-constellation { width: 100%; height: auto; overflow: visible; }
+.sky-mini svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+  aspect-ratio: 1000 / 520;
+}
+.sky-mini .lines {
+  stroke: var(--star-line);
+  stroke-opacity: 0.42;
+  stroke-width: 0.9;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sky-mini .dec {
+  fill: var(--star-body);
+  opacity: 0.55;
+}
+.sky-mini .dec.small { opacity: 0.35; }
+.sky-mini .anchor {
+  fill: var(--star-body);
+  opacity: 0.55;
+  transition: fill 180ms var(--ease), opacity 180ms var(--ease);
+}
+.sky-mini .anchor.current {
+  fill: var(--accent);
+  opacity: 1;
+  filter: drop-shadow(0 0 5px rgba(143, 176, 255, 0.7));
+}
+.sky-mini .halo {
+  fill: var(--star-anchor);
+  opacity: 0;
+}
+.sky-mini .halo.current { opacity: 0.32; }
+.sky-mini a { cursor: pointer; }
+.sky-mini a:hover .anchor,
+.sky-mini a:focus-visible .anchor {
+  fill: var(--accent);
+  opacity: 0.9;
+}
+.sky-mini a:focus-visible { outline: none; }
+.sky-mini a:focus-visible .anchor {
+  r: 5;
+  filter: drop-shadow(0 0 4px rgba(143, 176, 255, 0.6));
+}
+.sky-mini text {
+  font-family: var(--serif);
+  font-size: 22px;
+  fill: var(--ink-muted);
+  text-anchor: middle;
+  pointer-events: none;
+  letter-spacing: 0.2px;
+}
+.sky-mini text.current { fill: var(--ink); }
 
 
 .contact-list {
@@ -566,6 +610,6 @@ a:focus-visible, button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  .reveal, .sky-mast, .sky-svg, .sky-link, .sky-foot { opacity: 1 !important; transform: none !important; }
+  .reveal, .sky-mast, .sky-svg, .sky-link { opacity: 1 !important; transform: none !important; }
   .sky-link { transform: translate(-50%, -50%) !important; }
 }
