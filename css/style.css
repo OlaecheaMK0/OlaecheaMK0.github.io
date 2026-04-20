@@ -12,7 +12,12 @@ svg.sky-svg,
 ::view-transition-new(page-name),
 ::view-transition-old(constellation),
 ::view-transition-new(constellation) {
-  animation-duration: 620ms;
+  animation-duration: 1500ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 900ms;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
