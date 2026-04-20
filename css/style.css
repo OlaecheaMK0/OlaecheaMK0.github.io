@@ -321,6 +321,13 @@ h2 + .section-intro { margin-top: -1rem; }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
+/* Separate keyframe for .sky-link so the translate(-50%, -50%) centering
+   transform survives the fade-in. A plain translateY/scale would overwrite it. */
+@keyframes sky-link-fade {
+  0%   { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.99); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
 /* Sky nav — HTML overlay: each <a> IS the 44x44 hitbox, centered on its star */
 .sky-nav {
   position: absolute;
@@ -339,7 +346,7 @@ h2 + .section-intro { margin-top: -1rem; }
   color: var(--ink);
   pointer-events: auto;
   opacity: 0;
-  animation: sky-fade 800ms cubic-bezier(0.22, 1, 0.36, 1) 1100ms forwards;
+  animation: sky-link-fade 800ms cubic-bezier(0.22, 1, 0.36, 1) 1100ms forwards;
   transition: background 120ms var(--ease);
 }
 .sky-link:is(:hover, :focus-visible) {
