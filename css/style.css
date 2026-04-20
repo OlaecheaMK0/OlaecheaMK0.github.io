@@ -1,5 +1,29 @@
 @view-transition { navigation: auto; }
 
+h1.sky-name,
+a.brand {
+  view-transition-name: page-name;
+}
+svg.sky-svg,
+.sky-mini > svg {
+  view-transition-name: constellation;
+}
+::view-transition-old(page-name),
+::view-transition-new(page-name),
+::view-transition-old(constellation),
+::view-transition-new(constellation) {
+  animation-duration: 620ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-internal .sky-mast,
+.nav-internal .sky-svg,
+.nav-internal .sky-link {
+  animation: none !important;
+  opacity: 1 !important;
+}
+.nav-internal .sky-mast { transform: none !important; }
+
 :root {
   --bg: #05080f;
   --bg-deep: #03060c;
@@ -586,4 +610,5 @@ a:focus-visible, button:focus-visible {
   *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
   .reveal, .sky-mast, .sky-svg, .sky-link { opacity: 1 !important; transform: none !important; }
   .sky-link { transform: translate(-50%, -50%) !important; }
+  @view-transition { navigation: none; }
 }
