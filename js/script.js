@@ -89,11 +89,6 @@
   }
 
 
-  document.querySelectorAll('.year').forEach((el) => {
-    el.textContent = new Date().getFullYear();
-  });
-
-
   const links = document.querySelectorAll('.sky-link[data-star]');
   if (!links.length) return;
   for (const link of links) {

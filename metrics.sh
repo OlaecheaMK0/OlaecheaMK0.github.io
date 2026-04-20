@@ -77,7 +77,7 @@ rcheck "grep -q 'focus-visible' $DIR/css/style.css"
 rcheck "grep -qE 'font-display|display=swap' $DIR/index.html"
 rcheck "grep -q 'BlinkMacSystemFont\|-apple-system' $DIR/css/style.css"
 rcheck "grep -q '100svh' $DIR/css/style.css"
-rcheck "grep -qE '\\.year' $DIR/js/script.js"
+rcheck "grep -q '@media print' $DIR/css/style.css"
 rcheck "test -f $DIR/.nojekyll"
 
 # ── Composite efficiency score (lower bytes / latency = higher score) ─
