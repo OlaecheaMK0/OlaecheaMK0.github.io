@@ -1,6 +1,6 @@
 # Portfolio — Design Handoff
 
-Hand-coded static site, 4 pages (`index.html`, `project-1..3.html`). All tokens live in `css/style.css` `:root`.
+Hand-coded static site, 5 pages. Routes: `/`, `/about/`, `/instructions/`, `/resume/`, `/proposal/`. Old `.html` paths (e.g. `/about.html`) redirect to the new URLs. All tokens live in `css/style.css` `:root`.
 
 ## 1. Design tokens
 
@@ -31,8 +31,8 @@ Hand-coded static site, 4 pages (`index.html`, `project-1..3.html`). All tokens 
 Plus fixed `0.72rem` for `.eyebrow` (letter-spacing `0.22em`, uppercase).
 
 ### Fonts
-- `--serif`: **Instrument Serif** 400 + italic — display, h2, brand, taglines, work-number, back-arrow
-- `--sans`: **Inter** 300/400/500/600 — UI, body, h3, nav, `.project-summary`
+- `--serif`: **Instrument Serif** 400 + italic — display, h2, brand, taglines, SVG star labels
+- `--sans`: **Inter** 400/500 — UI, body, h3, nav, `.project-summary` (300/600 were dropped as unused)
 
 ### Spacing / layout
 - `--container: 68rem` — main/header/footer max width
@@ -41,10 +41,7 @@ Plus fixed `0.72rem` for `.eyebrow` (letter-spacing `0.22em`, uppercase).
 - Horizontal gutter: `1.5rem`
 
 ### Motion
-- `--dur-fast: 180ms` — color, border-color
-- `--dur-med: 220ms` — work-list hover padding shift
-- `--dur-slow: 700ms` — `.reveal` scroll-in
-- `--ease: ease`
+- `--eo: cubic-bezier(0.22, 1, 0.36, 1)` — the only motion token. Individual durations are hard-coded per component (mast-settle 1800ms, sky-fade 1300ms, sky-link-fade 800ms, reveal 700ms, view-transitions 1500ms / 260ms lateral).
 
 ### Radius
 - `2px` focus ring. No other rounded surfaces.
@@ -52,24 +49,25 @@ Plus fixed `0.72rem` for `.eyebrow` (letter-spacing `0.22em`, uppercase).
 ## 2. Component inventory
 | Component | Props / variants |
 |---|---|
-| `.site-header` + `nav` | `aria-current="page"` on current link = permanent underline; collapses to column `<640px` |
-| `.hero` + `.display` + `.tagline` | `.display .italic` span for mixed roman/italic; tagline capped at `32ch` |
-| `.work-list li > a` | Grid `auto 1fr`; `.work-number` (italic serif, `--step-3`, 60% opacity) + `.work-meta` (h3 + p ≤52ch); hover shifts padding +1rem |
+| `.site-header` + `.brand` | Sub-page header with the name as a link to `/` |
+| `.hero` + `.display` + `.tagline` | `.display .italic` span for mixed roman/italic; tagline capped at `32ch` (about.html) |
 | `.project-hero` | Eyebrow + `.project-title` + `.project-summary` (sans, ≤48ch) |
 | `.placeholder` | Left-rule muted serif block for WIP content |
 | `.contact-list li` | Grid `8ch 1fr`; `.label` (uppercase muted, `0.18em`) + link (underline on `--accent-dim`) |
-| `.site-footer` | Top rule, muted, single `<p>` |
-| `.back-link` | `::before "←"` serif; gap expands on hover |
 | `#stars` | Fixed canvas, `z-index: 0`, `pointer-events: none`, `aria-hidden` |
 
+Home-only: `.sky-mast`, `.sky-name`, `.sky-sub`, `.sky-field`, `.sky-svg` (constellation SVG with embedded `<text>` labels), `.sky-nav` + `.sky-link` + `.sky-goo` + `.sky-bubble` + `.sky-pill` (clickable hover-blob overlay).
+
+Sub-page-only: `.sky-mini` (navigation landmark, contains the smaller constellation SVG with embedded labels + 3 clickable `<a>` for non-current stars + `.star-shine` on the current star).
+
 ## 3. Responsive breakpoint
-Single hard break at **`max-width: 640px`** — header switches to column, nav wraps. Everything else is fluid.
+Single hard break at **`max-width: 720px`** — sky-field aspect ratio goes taller, `.sky-goo` shrinks, `mast-settle` keyframe caps at `scale(1.6)`, `.sky-pill` allows wrap. Everything else is fluid.
 
 ## 4. Interaction states
 - **Hover + focus-visible** styled identically — no hover-only affordances
-- **Focus ring**: `2px solid --accent`, offset `3px`
-- **`aria-current="page"`** matches hover state
-- **`prefers-reduced-motion`** forces `.reveal` visible, transitions to `0.001ms`
+- **Global focus ring**: `2px solid --accent`, `outline-offset: 3px`, `border-radius: 2px`
+- **`.sky-link` focus ring**: `2px solid --accent`, `outline-offset: 28px` (on the 0×0 anchor itself — kept outside the goo filter so the ring survives)
+- **`prefers-reduced-motion`** forces `.reveal` / `.sky-mast` / `.sky-svg` / `.sky-link` visible, sets animation-duration to `0.001ms`, disables cross-document view transitions
 
 ## 5. Gaps / open questions
 - No dark/light toggle — single dark theme
@@ -79,7 +77,9 @@ Single hard break at **`max-width: 640px`** — header switches to column, nav w
 - No utility classes beyond `.italic`
 - No `prefers-color-scheme` handling
 
-## 6. New components (constellation experiment — 2026-04-19)
+## 6. Historical: constellation experiment (2026-04-19, superseded)
+
+> Below is kept for archival context. The `.constellation-grid` / `.feature-constellation` / welcome-map variants were superseded by the current sky-map (§8). None of their CSS classes (`.constellation-grid`, `.feature-constellation`, `.welcome-*`, `.map-*`, `.pos-*`, `.work-list`, `.work-number`, `.work-meta`, `.site-footer`, `.back-link`) remain in `css/style.css`.
 
 Decorative inline SVG constellations reinforce each project's identity. Every project gets one, drawn inline with `viewBox="0 0 220 140"`.
 

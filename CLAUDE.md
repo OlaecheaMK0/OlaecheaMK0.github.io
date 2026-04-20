@@ -19,19 +19,27 @@ Hand-coded static HTML/CSS/JS. No build step, no framework, no bundler. Deployed
 ## File layout
 
 ```
-index.html          Home sky-map: full constellation, 4 anchor stars linked via HTML overlay + goo metaball hover
-about.html          About Me (this is the Activity 9 submission — content is real)
-project-1.html      Instructions — sky-mini nav with its star lit, body is Lorem
-project-2.html      Resume & Cover Letter — sky-mini, Lorem body
-project-3.html      Proposal — sky-mini, Lorem body
-css/style.css       All styling. Tokens in :root at top. Mobile break at 720px.
-js/script.js        Starfield canvas + IntersectionObserver reveals + sky-map hover bridge
-docs/               ADR-001..004 + RUNBOOK + TEST-PLAN
-DESIGN.md           Component handoff (tokens, skeletons, interaction states)
-metrics.sh          Scoreboard (bytes / latency / validation / safety / robustness → composite /100)
-smoketest.sh        Route status + W3C Nu HTML validation
-metrics/*.json      Historical score snapshots
-.nojekyll           Ensures GitHub Pages serves files as-is
+index.html           Home sky-map: full constellation, 4 anchor stars (<a class="sky-link">) +
+                     embedded SVG <text> labels so view-transitions morph smoothly into sub-pages.
+about/index.html     About Me (URL /about/; the Activity 9 submission originally used /about.html,
+                     which is now a redirect stub at the repo root — still returns 200 + redirects).
+instructions/        Project 1 (URL /instructions/). sky-mini nav with its star lit, body is Lorem.
+resume/              Project 2 (URL /resume/). sky-mini, Lorem body.
+proposal/            Project 3 (URL /proposal/). sky-mini, Lorem body.
+about.html           Redirect stub → /about/ (back-compat for the Activity 9 Canvas link).
+project-1.html       Redirect stub → /instructions/.
+project-2.html       Redirect stub → /resume/.
+project-3.html       Redirect stub → /proposal/.
+css/style.css        All styling. Tokens in :root at top. Mobile break at 720px.
+                     View-transitions enabled via @view-transition { navigation: auto; }.
+js/script.js         Starfield canvas + IntersectionObserver reveals + sky-map hover bridge.
+                     Inline <head> script on each page sets .nav-internal/.nav-lateral on <html>.
+docs/                ADR-001..004 + RUNBOOK + TEST-PLAN.
+DESIGN.md            Component handoff (tokens, skeletons, interaction states).
+metrics.sh           Scoreboard (bytes / latency / validation / safety / robustness → composite /100).
+smoketest.sh         Route status + W3C Nu HTML validation (18 routes, 5 content pages).
+metrics/*.json       Historical score snapshots.
+.nojekyll            Ensures GitHub Pages serves files as-is.
 ```
 
 ## Local dev
