@@ -14,7 +14,7 @@
 <body class="is-sky">
   <canvas id="stars" aria-hidden="true"></canvas>
 
-  <svg class="goo-defs" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute">
+  <svg class="goo-defs" aria-hidden="true" width="0" height="0" style="position:absolute">
     <defs>
       <filter id="goo" x="-30%" y="-30%" width="160%" height="160%">
         <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
@@ -33,7 +33,7 @@
     </header>
 
     <div class="sky-field">
-      <svg class="sky-svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+      <svg class="sky-svg" viewBox="0 0 1000 520" aria-hidden="true">
         <g class="sky-lines">
           <polyline points="215,135 340,185 460,150 585,185 735,115"/>
           <line x1="460" y1="150" x2="500" y2="260"/>
@@ -97,11 +97,10 @@
     </div>
 
     <footer class="sky-foot">
-      <p>&copy; <span class="year"></span> [Your Name]</p>
+      <p>&copy; <span class="year">2026</span> [Your Name]</p>
     </footer>
   </main>
 
-  <script src="js/stars.js" defer></script>
-  <script src="js/sky.js" defer></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>

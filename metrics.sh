@@ -8,7 +8,7 @@
 set -u
 PORT_URL="${1:-http://localhost:8765}"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-FILES=(index.html about.html project-1.html project-2.html project-3.html css/style.css js/stars.js js/sky.js)
+FILES=(index.html about.html project-1.html project-2.html project-3.html css/style.css js/script.js)
 HTML_PAGES=(index.html about.html project-1.html project-2.html project-3.html)
 
 # ── File-level byte accounting ────────────────────────────────────────
@@ -39,8 +39,8 @@ AVG_MS=$(awk "BEGIN { printf \"%.2f\", ($TOTAL_TIME / $ROUTE_COUNT) * 1000 }")
 
 # ── Request-count per home page (inline counts as 0, external is 1) ──
 # home (sky-map) loads: style.css, fonts, stars.js, sky.js + inline SVG (0 extra)
-HOME_REQUESTS=$(grep -c '<link rel="stylesheet"\|<script src=' "$DIR/index.html")
-ABOUT_REQUESTS=$(grep -c '<link rel="stylesheet"\|<script src=' "$DIR/about.html")
+HOME_REQUESTS=$(grep -cE '<link rel="stylesheet"|<script src=' "$DIR/index.html")
+ABOUT_REQUESTS=$(grep -cE '<link rel="stylesheet"|<script src=' "$DIR/about.html")
 
 # ── HTML validation via W3C Nu Validator ──────────────────────────────
 HTML_ERRORS=0
@@ -74,10 +74,10 @@ rcheck() { local cmd=$1; if eval "$cmd" >/dev/null 2>&1; then ROBUST_PASS=$((ROB
 rcheck "grep -q 'prefers-reduced-motion' $DIR/css/style.css"
 rcheck "grep -q '@media.*max-width' $DIR/css/style.css"
 rcheck "grep -q 'focus-visible' $DIR/css/style.css"
-rcheck "grep -q 'font-display\|display=swap' $DIR/index.html"
+rcheck "grep -qE 'font-display|display=swap' $DIR/index.html"
 rcheck "grep -q 'BlinkMacSystemFont\|-apple-system' $DIR/css/style.css"
 rcheck "grep -q '100svh' $DIR/css/style.css"
-rcheck "grep -q '.year' $DIR/js/stars.js"
+rcheck "grep -qE '\\.year' $DIR/js/script.js"
 rcheck "test -f $DIR/.nojekyll"
 
 # ── Composite efficiency score (lower bytes / latency = higher score) ─

@@ -4,7 +4,7 @@
 #   Default: http://localhost:8000
 set -u
 BASE="${1:-http://localhost:8000}"
-ROUTES=(/ /index.html /about.html /project-1.html /project-2.html /project-3.html /css/style.css /js/stars.js)
+ROUTES=(/ /index.html /about.html /project-1.html /project-2.html /project-3.html /css/style.css /js/script.js)
 PASS=0
 FAIL=0
 

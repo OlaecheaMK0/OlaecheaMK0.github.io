@@ -23,9 +23,6 @@
   --container: 68rem;
   --prose: 36rem;
 
-  --dur-fast: 180ms;
-  --dur-med: 220ms;
-  --dur-slow: 700ms;
   --ease: ease;
 
   --star-body: #eef3ff;
@@ -193,12 +190,6 @@ h3 {
   margin: 0 0 0.35rem;
   color: var(--ink);
 }
-.section-intro {
-  color: var(--ink-soft);
-  max-width: var(--prose);
-  margin: 0 0 2.5rem;
-}
-h2 + .section-intro { margin-top: -1rem; }
 
 /* About prose ------------------------------------------------------- */
 .prose {
@@ -246,7 +237,6 @@ h2 + .section-intro { margin-top: -1rem; }
   color: var(--ink);
   text-wrap: balance;
 }
-.sky-name .italic { font-style: italic; }
 .sky-sub {
   font-family: var(--serif);
   font-style: italic;
@@ -258,7 +248,7 @@ h2 + .section-intro { margin-top: -1rem; }
 }
 
 @keyframes mast-settle {
-  0%   { transform: translateY(22vh) scale(2.0); letter-spacing: 0; }
+  0%   { transform: translateY(22svh) scale(2); letter-spacing: 0; }
   100% { transform: translateY(0) scale(1); letter-spacing: -0.015em; }
 }
 
@@ -282,34 +272,32 @@ h2 + .section-intro { margin-top: -1rem; }
   opacity: 0;
   animation: sky-fade 1300ms cubic-bezier(0.22, 1, 0.36, 1) 400ms forwards;
 }
-.sky-lines {
+.sky-lines, .feature-constellation .lines {
   stroke: var(--star-line);
   stroke-opacity: 0.58;
   stroke-width: 0.95;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  transition: stroke 140ms var(--ease), stroke-opacity 140ms var(--ease);
 }
-.sky-stars circle { transition: fill 120ms var(--ease); }
-.sky-stars .dec {
+.sky-lines { transition: stroke 140ms var(--ease), stroke-opacity 140ms var(--ease); }
+.sky-stars .dec, .feature-constellation .stars circle {
   fill: var(--star-body);
-  opacity: 0.85;
-  filter: drop-shadow(0 0 1.2px rgba(255, 255, 255, 0.5));
+  filter: drop-shadow(0 0 1.4px rgba(255, 255, 255, 0.55));
 }
+.sky-stars .dec { opacity: 0.85; transition: fill 120ms var(--ease); }
 .sky-stars .dec.small { opacity: 0.65; }
-.sky-stars .anchor {
+.sky-stars .anchor, .feature-constellation .stars .anchor {
   fill: var(--star-anchor);
-  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.8));
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.78));
+  transition: fill 120ms var(--ease);
 }
-.sky-stars .halo {
+.sky-stars .halo, .feature-constellation .glow {
   fill: var(--star-anchor);
-  opacity: 0.12;
-  transition: opacity 140ms var(--ease);
+  opacity: 0.15;
 }
-.sky-stars .anchor.active {
-  fill: var(--accent);
-}
+.sky-stars .halo { transition: opacity 140ms var(--ease); }
+.sky-stars .anchor.active { fill: var(--accent); }
 .sky-stars .halo.active { opacity: 0.38; }
 .sky-svg:has(.anchor.active) .sky-lines {
   stroke: var(--accent);
@@ -355,11 +343,12 @@ h2 + .section-intro { margin-top: -1rem; }
   position: absolute;
   left: 0;
   top: 0;
-  width: 340px;
-  height: 160px;
+  width: 280px;
+  height: 140px;
   transform: translate(-50%, -50%);
   filter: url(#goo);
   pointer-events: none;
+  will-change: filter;
 }
 .sky-bubble {
   position: absolute;
@@ -373,65 +362,49 @@ h2 + .section-intro { margin-top: -1rem; }
   transition: background 180ms var(--ease);
   pointer-events: auto;
 }
-.sky-pill {
+.sky-pill, .sky-label {
   position: absolute;
+  padding: 1rem 1.1rem;
+  font-family: var(--serif);
+  font-size: var(--step-1);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+  background: transparent;
+  pointer-events: auto;
+}
+.sky-pill {
   left: 50%;
   top: calc(50% + 20px);
   transform: translateX(-50%);
-  padding: 1rem 1.1rem;
   border-radius: 100px;
-  font-family: var(--serif);
-  font-size: var(--step-1);
-  letter-spacing: 0.01em;
-  line-height: 1;
-  white-space: nowrap;
   color: transparent;
-  background: transparent;
   transition: background 200ms var(--ease);
-  pointer-events: auto;
 }
-.sky-link.reverse .sky-pill {
-  top: auto;
-  bottom: calc(50% + 20px);
-}
-.sky-link:is(:hover, :focus-visible) .sky-bubble,
-.sky-link:is(:hover, :focus-visible) .sky-pill {
-  background: rgba(185, 208, 250, 0.6);
-}
-.sky-goo {
-  opacity: 0.48;
-  transition: opacity 200ms var(--ease);
-}
-/* Actual visible label — same box as pill so text aligns perfectly inside it */
 .sky-label {
-  position: absolute;
   left: 0;
   top: 20px;
   transform: translateX(-50%);
-  padding: 1rem 1.1rem;
-  white-space: nowrap;
-  font-family: var(--serif);
-  font-size: var(--step-1);
-  letter-spacing: 0.01em;
-  line-height: 1;
   color: var(--ink-soft);
   opacity: 0.82;
   transition: opacity 120ms var(--ease), color 120ms var(--ease);
-  pointer-events: auto;
 }
-.sky-link.reverse .sky-label {
-  top: auto;
-  bottom: 20px;
-}
-.sky-link:is(:hover, :focus-visible) .sky-label { opacity: 1; color: var(--ink); }
-.sky-link:focus-visible {
-  outline: none;
-}
+.sky-link.reverse .sky-pill { top: auto; bottom: calc(50% + 20px); }
+.sky-link.reverse .sky-label { top: auto; bottom: 20px; }
 .sky-link:focus-visible .sky-bubble,
 .sky-link:focus-visible .sky-pill {
-  background: rgba(143, 176, 255, 0.55);
-  box-shadow: 0 0 0 2px var(--accent);
+  background: rgba(185, 208, 250, 0.6);
 }
+.sky-link:focus-visible .sky-label { opacity: 1; color: var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .sky-link:hover .sky-bubble,
+  .sky-link:hover .sky-pill { background: rgba(185, 208, 250, 0.6); }
+  .sky-link:hover .sky-label { opacity: 1; color: var(--ink); }
+}
+.sky-link:focus-visible { outline: none; }
+.sky-link:focus-visible .sky-bubble,
+.sky-link:focus-visible .sky-pill { box-shadow: 0 0 0 2px var(--accent); }
+.sky-goo { opacity: 0.48; transition: opacity 200ms var(--ease); }
 
 .sky-foot {
   text-align: center;
@@ -450,11 +423,21 @@ h2 + .section-intro { margin-top: -1rem; }
   .sky { padding: 0.75rem 1rem; }
   .sky-sub { font-size: var(--step-0); }
   .sky-field { aspect-ratio: 1000 / 680; margin-top: 0.75rem; }
-  .sky-label { font-size: var(--step-0); opacity: 1; }
+  .sky-goo { width: 200px; height: 120px; }
+  .sky-label, .sky-pill { font-size: var(--step-0); padding: 0.7rem 0.85rem; white-space: normal; text-align: center; max-width: 44vw; }
+  .sky-label { opacity: 1; }
   @keyframes mast-settle {
-    0%   { transform: translateY(15vh) scale(1.6); letter-spacing: 0; }
+    0%   { transform: translateY(15svh) scale(1.6); letter-spacing: 0; }
     100% { transform: translateY(0) scale(1); letter-spacing: -0.015em; }
   }
+}
+
+/* Print — flatten to paper-friendly layout */
+@media print {
+  body { background: #fff !important; color: #000 !important; }
+  #stars, .goo-defs, .sky-svg, .sky-nav { display: none !important; }
+  .sky-mast, .hero, .project-hero, .site-header { animation: none !important; }
+  a { color: #000; text-decoration: underline; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -474,28 +457,7 @@ h2 + .section-intro { margin-top: -1rem; }
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
 }
-.feature-constellation {
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-.feature-constellation .lines {
-  stroke: var(--star-line);
-  stroke-opacity: 0.55;
-  stroke-width: 0.9;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
-}
-.feature-constellation .stars circle {
-  fill: var(--star-body);
-  filter: drop-shadow(0 0 1.6px rgba(255, 255, 255, 0.6));
-}
-.feature-constellation .stars .anchor {
-  fill: var(--star-anchor);
-  filter: drop-shadow(0 0 2.8px rgba(255, 255, 255, 0.75));
-}
-.feature-constellation .glow { fill: var(--star-anchor); opacity: 0.18; }
+.feature-constellation { width: 100%; height: auto; overflow: visible; }
 
 @media (max-width: 720px) {
   .project-hero.has-feature {
