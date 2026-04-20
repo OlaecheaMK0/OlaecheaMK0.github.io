@@ -84,4 +84,36 @@ Commit `8dc68fa` ("baseline: pre-constellation experiment") is the known-good an
 ### 6d. Stars on Retina look too faint or too bright
 **Symptoms:** Constellation stars either pop too aggressively or disappear into the background depending on display.
 
-**Fix:** Adjust `filter: drop-shadow()` blur radius in `css/style.css` (`.constellation .stars circle`, `.feature-constellation .stars circle`). Lower blur = crisper / less glow. Default is `1.4–1.6px`; dial to `0.8px` if too soft or `2.2px` if too hard.
+**Fix:** Adjust `filter: drop-shadow()` blur radius in `css/style.css` (`.feature-constellation .stars circle`, `.map-glyph .stars circle`). Lower blur = crisper / less glow. Default is `1.4–1.6px`; dial to `0.8px` if too soft or `2.2px` if too hard.
+
+## 7. Welcome-map specific issues
+
+### 7a. Professor reports "I can't find Carlos's About Me"
+**Likely cause:** she typed the bare domain `olaecheamk0.github.io` and landed on the welcome-map instead of About.
+
+**Triage:**
+1. Confirm which URL she submitted on Canvas. Activity 9 is `olaecheamk0.github.io/about.html` specifically.
+2. If she visited the root: point her at the "About" constellation (upper-left) — labels are visible by default.
+3. Fallback: send the direct `/about.html` link.
+
+### 7b. "The constellation nav doesn't work on my phone"
+Mobile is a 2×2 grid with always-visible labels. If broken:
+- Verify `<meta name="viewport" content="width=device-width, initial-scale=1">` is in `<head>`.
+- Verify the `@media (max-width: 720px)` block in `css/style.css`.
+- Touch targets are `.map-node` including both glyph and label — should be ≥110px tall.
+
+### 7c. JavaScript disabled
+Welcome-map degrades gracefully:
+- Starfield `<canvas>` stays blank (canvas needs JS).
+- Constellations + labels + navigation all work (pure HTML/CSS).
+- `.year` footer stays empty.
+
+### 7d. Labels not brightening on hover
+Causes: iOS sticky `:hover` (expected), `@media (hover: hover)` not matching a hybrid device, a CSS specificity override.
+
+### 7e. Reverting the welcome-map only (keep project-page constellations + about.html)
+```sh
+git -C ~/Desktop/portfolio checkout 94d6e14 -- index.html
+git -C ~/Desktop/portfolio commit -m "revert: welcome-map to constellation-grid home"
+```
+Full revert paths are documented in `docs/ADR-003-welcome-map.md`.

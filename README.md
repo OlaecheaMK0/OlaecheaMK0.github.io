@@ -1,6 +1,13 @@
 # Portfolio
 
-Live: `https://olaecheamk0.github.io` · Built: static HTML, CSS, and a little vanilla JS — no build step.
+Live welcome map: `https://olaecheamk0.github.io` · About page (Activity 9 submission URL): `https://olaecheamk0.github.io/about.html` · Built: static HTML, CSS, and a little vanilla JS — no build step.
+
+## Two URLs, two purposes
+
+- `index.html` — the **welcome map**: public landing page, decorative entry with 4 constellation nav nodes.
+- `about.html` — the **About Me + Contact** page. This is the URL to submit for ENC 3241 Activity 9.
+
+The root URL is for visitors; the `/about.html` URL is for the course rubric.
 
 ## Local preview
 
@@ -27,6 +34,8 @@ git push -u origin main
 
 Then: GitHub → repo → **Settings → Pages → Source: `main` / root**. First deploy can take up to ~10 minutes; subsequent pushes are under a minute.
 
+For Activity 9 submission, submit the URL `https://olaecheamk0.github.io/about.html` (not the root URL).
+
 ## Redeploy
 
 ```sh
@@ -37,7 +46,8 @@ Pages rebuilds automatically. Check the **Actions** tab on GitHub for build stat
 
 ## Customize
 
-- **Name, bio, contact links**: `index.html` — search for `[` to find every placeholder
+- **Name, bio, contact links**: `about.html` — search for `[` to find every placeholder (the About Me page submitted for Activity 9)
+- **Welcome-map name / tagline**: `index.html` — minimal copy on the landing page
 - **Each project page**: `project-N.html` — title, intro, embedded PDF
 - **Colors, fonts, spacing**: `css/style.css` — tokens live at the top in `:root`
 - **Starfield density**: `js/stars.js` — `STAR_DENSITY` constant
@@ -51,14 +61,15 @@ grep -rn "\[" *.html
 ## Structure
 
 ```
-index.html          About Me + portfolio home
+index.html          Welcome map (public landing, constellation nav)
+about.html          About Me + Contact (Activity 9 submission URL)
 project-1.html      Instructions (ENC 3241 Project 1)
 project-2.html      Resume & Cover Letter (Project 2)
 project-3.html      Proposal (Project 3)
 css/style.css       Tokens + component styles
 js/stars.js         Static starfield + scroll reveals + year stamp
 assets/             PDFs, images
-docs/               ADR + runbook
+docs/               ADRs + runbook + test plan
 DESIGN.md           Tokens & components handoff
 smoketest.sh        Pre-deploy smoke test (bash)
 .nojekyll           Tells GitHub Pages to serve files as-is

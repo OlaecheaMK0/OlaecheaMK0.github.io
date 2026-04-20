@@ -110,4 +110,62 @@ Same SVG family at slightly larger star radii (`r=2` non-anchor, `r=3.5` anchor)
 - Reduced-motion: hover transform disabled
 
 ### 6.5 Extending
-To add a 4th constellation: copy one `<li>` block in `index.html`, redraw the SVG inside `viewBox="0 0 220 140"` with ≤7 points and one `.anchor` star, update the `<h3>`, `<p>`, `.caption`, and the matching `project-4.html` feature SVG. Update `.constellation-grid` to `repeat(auto-fit, minmax(220px, 1fr))` if you want it to wrap gracefully.
+To add a 4th constellation: copy one `<li>` block in `index.html`, redraw the SVG inside `viewBox="0 0 220 140"` with ≤7 points and one `.anchor` star, update the `<h3>`, `<p>`, `.caption`, and the matching `project-4.html` feature SVG.
+
+> **Historical note:** As of 2026-04-19 the `.constellation-grid` CSS was removed because the home page switched to the welcome-map pattern (§7). `.feature-constellation` (project-page hero) is still live. Recover the grid CSS via `git show 94d6e14:css/style.css` if needed.
+
+## 7. Welcome map (home, 2026-04-19)
+
+Replaces the prior constellation-grid on `index.html`. The home is now a centered masthead + a four-node scattered "map" of destinations + compact footer. Each node is an `<a>` containing an SVG glyph (120×120 viewBox) and a label.
+
+### 7.1 Structure
+```html
+<body class="is-welcome">
+  <main class="welcome">
+    <header class="welcome-mast">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="welcome-name"><span class="italic">Name</span></h1>
+      <p class="welcome-sub">Tagline</p>
+    </header>
+    <nav class="map-nav" aria-label="Portfolio">
+      <a class="map-node pos-about" href="about.html">
+        <svg class="map-glyph" viewBox="0 0 120 120" aria-hidden="true" focusable="false">...</svg>
+        <span class="map-label">About</span>
+      </a>
+      <!-- .pos-instructions, .pos-resume, .pos-proposal -->
+    </nav>
+    <footer class="welcome-foot"><p>&copy; <span class="year"></span> Name</p></footer>
+  </main>
+</body>
+```
+
+`.welcome` is a 3-row grid (`auto 1fr auto`) filling `100svh`, with `100vh` fallback for older browsers.
+
+### 7.2 Tokens
+- Type: `--serif` (name + label), `--ink`/`--ink-soft`/`--ink-muted`
+- Name size: `--step-4` · Tagline size: `--step-1` · Label size: `--step-1`
+- Colors: `--star-body`, `--star-line`, `--star-anchor` (shared with `.feature-constellation`)
+- Motion: `--dur-med` + `--ease`
+
+### 7.3 Interaction states
+- **Hover** (gated by `@media (hover: hover) and (pointer: fine)`) — node lifts `translateY(-3px)`.
+- **Hover + focus-visible** (same visual treatment, collapsed via `:is(:hover, :focus-visible)`) — label opacity `0.7 → 1`, lines tint `--accent` at 0.8 opacity, non-anchor stars → `--accent`, glow `0.14 → 0.28`.
+- **Focus-visible** — `2px solid --accent` outline at 4px offset.
+- **Reduced motion** — transform suppressed.
+
+### 7.4 Responsive
+- **≥721px** — `.map-nav` is a `clamp(320px, 42vh, 480px)` tall box; each `.map-node` is absolutely positioned via `.pos-*`. Labels at opacity `0.7`.
+- **≤720px** — `.map-nav` becomes a 2×2 grid. Labels always at opacity 1. Glyphs shrink to `clamp(72px, 22vw, 110px)`.
+
+### 7.5 Accessibility
+- `<nav aria-label="Portfolio">` names the landmark.
+- Each `<a>` carries its destination via visible `.map-label` text.
+- SVGs decorative: `aria-hidden="true"` + `focusable="false"`.
+- Skip link `#welcome-main` targets `<main>`.
+- Label opacity 0.7 passes WCAG AA for small text (~5.9:1 contrast).
+- Tab order follows DOM order (about → instructions → resume → proposal).
+
+### 7.6 Adding a 5th node
+1. Append one `<a class="map-node pos-NEW">` inside `.map-nav` with a `viewBox="0 0 120 120"` SVG + `<span class="map-label">`.
+2. Add `.pos-NEW { top/left/right/bottom: …%; }` inside `@media (min-width: 721px)`.
+3. Mobile grid auto-reflows to 2×3 with one orphan; switch to `repeat(auto-fit, minmax(140px, 1fr))` if even distribution matters.
