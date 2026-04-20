@@ -44,7 +44,7 @@ Option A is defensible if the outside viewer reads the constellation as navigati
 
 ```sh
 # Full revert to baseline
-git -C /Users/co/Desktop/portfolio reset --hard 8dc68fa
+git -C /Users/co/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard 8dc68fa
 
 # Partial revert — strip project-page features only (Option B)
 # Remove the has-feature class + <svg class="feature-constellation"> block

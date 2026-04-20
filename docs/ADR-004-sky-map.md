@@ -60,14 +60,14 @@ If a fifth top-level section appears within the next two months, revisit and con
 
 ```sh
 # Stay on A (current) — nothing to do
-git -C ~/Desktop/portfolio log -1 --oneline
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio log -1 --oneline
 
 # Revert to B (welcome-map)
-git -C ~/Desktop/portfolio reset --hard de0d4a9
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard de0d4a9
 
 # Revert to C (constellation-grid home)
-git -C ~/Desktop/portfolio reset --hard 94d6e14
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard 94d6e14
 
 # Revert to D (baseline plain work-list)
-git -C ~/Desktop/portfolio reset --hard 8dc68fa
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard 8dc68fa
 ```

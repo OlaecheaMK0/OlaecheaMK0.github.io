@@ -14,7 +14,7 @@ Hand-coded static HTML/CSS/JS. No build step, no framework, no bundler. Deployed
 
 - **Live:** https://olaecheamk0.github.io/
 - **Repo:** https://github.com/OlaecheaMK0/OlaecheaMK0.github.io
-- **Local path:** `/Users/co/Desktop/portfolio`
+- **Local path:** `/Users/co/Desktop/college/Sophomore/Spring/ENC/portfolio`
 
 ## File layout
 
@@ -37,7 +37,7 @@ metrics/*.json      Historical score snapshots
 ## Local dev
 
 ```sh
-cd ~/Desktop/portfolio
+cd ~/Desktop/college/Sophomore/Spring/ENC/portfolio
 python3 -m http.server 8765   # already usually running in the background
 # → http://localhost:8765/
 ```

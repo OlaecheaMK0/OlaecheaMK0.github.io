@@ -1,6 +1,6 @@
 # Portfolio Post-Deploy Runbook
 
-Site: `https://olaecheamk0.github.io` · Source: `~/Desktop/portfolio/`
+Site: `https://olaecheamk0.github.io` · Source: `~/Desktop/college/Sophomore/Spring/ENC/portfolio/`
 
 ## 1. Pushed but site still 404s
 **Symptoms:** `git push` succeeded, but the URL returns "There isn't a GitHub Pages site here."
@@ -77,7 +77,7 @@ Site: `https://olaecheamk0.github.io` · Source: `~/Desktop/portfolio/`
 
 **Fix:**
 ```sh
-git -C /Users/co/Desktop/portfolio reset --hard 8dc68fa
+git -C /Users/co/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard 8dc68fa
 ```
 Commit `8dc68fa` ("baseline: pre-constellation experiment") is the known-good anchor.
 
@@ -113,8 +113,8 @@ Causes: iOS sticky `:hover` (expected), `@media (hover: hover)` not matching a h
 
 ### 7e. Reverting the welcome-map only (keep project-page constellations + about.html)
 ```sh
-git -C ~/Desktop/portfolio checkout 94d6e14 -- index.html
-git -C ~/Desktop/portfolio commit -m "revert: welcome-map to constellation-grid home"
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio checkout 94d6e14 -- index.html
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio commit -m "revert: welcome-map to constellation-grid home"
 ```
 Full revert paths are documented in `docs/ADR-003-welcome-map.md`.
 
@@ -162,12 +162,12 @@ Treat as SEV3. Two responses:
 ### 8f. Revert paths
 ```sh
 # Revert sky-map to welcome-map (no animation, 4 small constellations)
-git -C ~/Desktop/portfolio reset --hard de0d4a9
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard de0d4a9
 
 # Revert to constellation-grid home
-git -C ~/Desktop/portfolio reset --hard 94d6e14
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard 94d6e14
 
 # Revert to plain work-list baseline
-git -C ~/Desktop/portfolio reset --hard 8dc68fa
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard 8dc68fa
 ```
 Full decision context in `docs/ADR-004-sky-map.md`.

@@ -23,7 +23,7 @@ python3 -m http.server 8000
 First time:
 
 ```sh
-cd /Users/co/Desktop/portfolio
+cd /Users/co/Desktop/college/Sophomore/Spring/ENC/portfolio
 git init
 git add .
 git commit -m "Initial portfolio"

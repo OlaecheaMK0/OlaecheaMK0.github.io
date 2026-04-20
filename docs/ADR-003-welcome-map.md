@@ -52,12 +52,12 @@ Revisit if an outside viewer fails to reach a project page in <15 seconds.
 
 ```sh
 # Full revert to baseline (plain work-list home)
-git -C ~/Desktop/portfolio reset --hard 8dc68fa
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard 8dc68fa
 
 # Revert to constellation-grid home (pre-welcome-map)
-git -C ~/Desktop/portfolio reset --hard 94d6e14
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio reset --hard 94d6e14
 
 # Scoped revert — restore welcome-map home only, keep project-page constellations + about.html
-git -C ~/Desktop/portfolio checkout 94d6e14 -- index.html
-git -C ~/Desktop/portfolio commit -m "revert: welcome-map to constellation-grid home"
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio checkout 94d6e14 -- index.html
+git -C ~/Desktop/college/Sophomore/Spring/ENC/portfolio commit -m "revert: welcome-map to constellation-grid home"
 ```
