@@ -441,7 +441,7 @@ h3 {
 .sky-mini .sky-goo-link:hover .pill,
 .sky-mini .sky-goo-link:focus-visible .bubble,
 .sky-mini .sky-goo-link:focus-visible .pill {
-  fill: rgba(185, 208, 250, 0.55);
+  fill: rgba(185, 208, 250, 0.6);
 }
 .sky-mini .sky-goo-link:hover .anchor,
 .sky-mini .sky-goo-link:focus-visible .anchor {
@@ -452,7 +452,12 @@ h3 {
 .sky-mini .sky-goo-link:focus-visible .label {
   fill: var(--ink);
 }
-.sky-mini .sky-goo-link:focus-visible { outline: none; }
+/* SVG <a> default focus ring clips ugly to content bbox; own it explicitly. */
+.sky-mini .sky-goo-link { outline: none; }
+.sky-mini .sky-goo-link:focus-visible .pill {
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
 
 .sky-mini text {
   font-family: var(--serif);
