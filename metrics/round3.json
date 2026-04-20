@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-04-20T01:24:46Z",
+  "commit": "cb2bde9",
+  "totals": {
+    "raw_bytes": 36591,
+    "gzipped_bytes": 12794,
+    "avg_latency_ms": 0.83,
+    "html_errors": 0,
+    "home_requests": 3,
+    "about_requests": 3
+  },
+  "safety": { "passed": 10, "total": 10, "pct": 100.0 },
+  "robustness": { "passed": 8, "total": 8, "pct": 100.0 },
+  "scores": {
+    "efficiency_bytes": 62.5,
+    "efficiency_latency": 100.0,
+    "validation": 100.0,
+    "safety": 100.0,
+    "robustness": 100.0,
+    "composite": 88.8
+  },
+  "files": {
+  "index.html": { "raw": 4706, "gz": 1463 },
+  "about.html": { "raw": 3493, "gz": 1598 },
+  "project-1.html": { "raw": 3473, "gz": 1550 },
+  "project-2.html": { "raw": 3354, "gz": 1460 },
+  "project-3.html": { "raw": 3444, "gz": 1516 },
+  "css/style.css": { "raw": 14306, "gz": 3789 },
+  "js/script.js": { "raw": 3815, "gz": 1418 }
+  }
+}

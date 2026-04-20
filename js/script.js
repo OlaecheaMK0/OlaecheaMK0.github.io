@@ -1,10 +1,10 @@
 (function () {
-  // ── Starfield ──────────────────────────────────────────────────────
+
   const canvas = document.getElementById('stars');
   if (canvas) {
     const ctx = canvas.getContext('2d');
-    // Reproducible starfield via seeded PRNG — layout is stable across
-    // reloads but still feels scattered.
+
+
     function mulberry32(seed) {
       return function () {
         let t = (seed += 0x6d2b79f5);
@@ -68,7 +68,7 @@
     });
     build();
 
-    // Reveal-on-scroll for prose + headings. Static; fires once.
+
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver(
         (entries) => {
@@ -88,12 +88,12 @@
     }
   }
 
-  // ── Current year in footer ─────────────────────────────────────────
+
   document.querySelectorAll('.year').forEach((el) => {
     el.textContent = new Date().getFullYear();
   });
 
-  // ── Sky-map hover bridge (only active on index.html) ───────────────
+
   const links = document.querySelectorAll('.sky-link[data-star]');
   if (!links.length) return;
   for (const link of links) {

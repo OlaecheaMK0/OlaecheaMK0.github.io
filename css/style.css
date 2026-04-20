@@ -411,6 +411,8 @@ h3 {
   .sky-goo { width: 200px; height: 120px; }
   .sky-label, .sky-pill { font-size: var(--step-0); padding: 0.7rem 0.85rem; white-space: normal; text-align: center; max-width: 44vw; }
   .sky-label { opacity: 1; }
+  .project-hero.has-feature { grid-template-columns: 1fr; gap: 1.5rem; }
+  .feature-constellation { max-width: 180px; margin: 0.5rem 0; }
   @keyframes mast-settle {
     0%   { transform: translateY(15svh) scale(1.6); letter-spacing: 0; }
     100% { transform: translateY(0) scale(1); letter-spacing: -0.015em; }
@@ -425,15 +427,6 @@ h3 {
   a { color: #000; text-decoration: underline; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .sky-mast, .sky-svg, .sky-link, .sky-foot {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    letter-spacing: -0.015em !important;
-  }
-  .sky-link { transform: translate(-50%, -50%) !important; }
-}
 
 .project-hero.has-feature {
   display: grid;
@@ -443,13 +436,6 @@ h3 {
 }
 .feature-constellation { width: 100%; height: auto; overflow: visible; }
 
-@media (max-width: 720px) {
-  .project-hero.has-feature {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  .feature-constellation { max-width: 180px; margin: 0.5rem 0; }
-}
 
 .contact-list {
   list-style: none;
@@ -579,6 +565,7 @@ a:focus-visible, button:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  .reveal { opacity: 1; transform: none; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  .reveal, .sky-mast, .sky-svg, .sky-link, .sky-foot { opacity: 1 !important; transform: none !important; }
+  .sky-link { transform: translate(-50%, -50%) !important; }
 }
