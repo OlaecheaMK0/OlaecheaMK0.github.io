@@ -78,10 +78,6 @@ body {
   max-width: var(--container);
   margin: 0 auto;
   padding: 1.75rem 1.5rem 0;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 2rem;
 }
 .brand {
   font-family: var(--serif);
@@ -89,44 +85,6 @@ body {
   color: var(--ink);
   text-decoration: none;
   letter-spacing: 0.01em;
-}
-.site-header nav ul {
-  display: flex;
-  gap: 1.75rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: var(--step--1);
-}
-.site-header nav a {
-  color: var(--ink-soft);
-  text-decoration: none;
-  position: relative;
-  padding-bottom: 0.15rem;
-  transition: color 180ms ease;
-}
-.site-header nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 1px;
-  width: 100%;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 250ms ease;
-}
-.site-header nav a:hover,
-.site-header nav a:focus-visible,
-.site-header nav a[aria-current="page"] { color: var(--ink); }
-.site-header nav a:hover::after,
-.site-header nav a:focus-visible::after,
-.site-header nav a[aria-current="page"]::after { transform: scaleX(1); }
-
-@media (max-width: 640px) {
-  .site-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .site-header nav ul { flex-wrap: wrap; gap: 1rem 1.25rem; }
 }
 
 main {
