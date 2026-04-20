@@ -4,7 +4,7 @@
 #   Default: http://localhost:8000
 set -u
 BASE="${1:-http://localhost:8000}"
-ROUTES=(/ /index.html /about.html /project-1.html /project-2.html /project-3.html /css/style.css /js/script.js)
+ROUTES=(/ /index.html /about/ /instructions/ /resume/ /proposal/ /about.html /project-1.html /project-2.html /project-3.html /css/style.css /js/script.js)
 PASS=0
 FAIL=0
 
@@ -35,7 +35,7 @@ fi
 # HTML validation via W3C Nu Validator (requires network)
 echo "---"
 echo "HTML validation (W3C Nu Validator)"
-for p in index.html about.html project-1.html project-2.html project-3.html; do
+for p in index.html about/index.html instructions/index.html resume/index.html proposal/index.html; do
   file="$(dirname "$0")/$p"
   if [[ ! -f "$file" ]]; then
     echo "SKIP  $p (file not found)"

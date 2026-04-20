@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project 1: Instructions — Carlos Olaechea</title>
+  <meta name="description" content="Lorem ipsum — project 1 description. Produced for ENC 3241 (Technical Writing), Spring 2026." />
+  <meta name="theme-color" content="#05080f" />
+  <style>:root{color-scheme:dark}html{background:#05080f}</style>
+  <script>try{if(document.referrer&&new URL(document.referrer).origin===location.origin){document.documentElement.classList.add('nav-internal');var h=function(p){return p==='/'||p==='/index.html'};if(!h(new URL(document.referrer).pathname)&&!h(location.pathname))document.documentElement.classList.add('nav-lateral')}}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="/">Carlos Olaechea</a>
+  </header>
+
+  <nav class="sky-mini" aria-label="Portfolio map">
+    <svg viewBox="0 0 1000 520">
+    <defs>
+      <filter id="mini-goo" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
+        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 9 -4"/>
+      </filter>
+    </defs>
+    <g class="lines" aria-hidden="true">
+      <polyline points="215,135 340,185 460,150 585,185 735,115"/>
+      <line x1="460" y1="150" x2="500" y2="260"/>
+      <polyline points="500,260 380,320 240,405"/>
+      <polyline points="500,260 640,325 790,420"/>
+    </g>
+    <g class="stars" aria-hidden="true">
+      <circle class="dec" cx="340" cy="185" r="1.6"/>
+      <circle class="dec" cx="460" cy="150" r="1.6"/>
+      <circle class="dec" cx="585" cy="185" r="1.6"/>
+      <circle class="dec" cx="500" cy="260" r="2"/>
+      <circle class="dec" cx="380" cy="320" r="1.6"/>
+      <circle class="dec" cx="640" cy="325" r="1.6"/>
+      <circle class="dec small" cx="295" cy="245" r="1.2"/>
+      <circle class="dec small" cx="705" cy="245" r="1.2"/>
+      <circle class="dec small" cx="420" cy="215" r="1.1"/>
+      <circle class="dec small" cx="560" cy="220" r="1.1"/>
+    </g>
+    <g class="star-shine" transform="translate(735 115)" aria-hidden="true">
+      <line class="ray" x1="0" y1="-30" x2="0" y2="30"/>
+      <circle class="halo current" r="20"/>
+      <circle class="anchor current" r="4.2"/>
+    </g>
+    <text class="label current" x="735" y="86" aria-hidden="true">Instructions</text>
+    <a href="/about/" aria-label="About" class="sky-goo-link">
+      <g filter="url(#mini-goo)">
+        <circle class="bubble" cx="215" cy="135" r="18"/>
+        <rect class="pill" x="145" y="73" width="140" height="52" rx="26"/>
+      </g>
+      <circle class="anchor" cx="215" cy="135" r="3.4"/>
+      <text class="label" x="215" y="106" aria-hidden="true">About</text>
+    </a>
+    <a href="/resume/" aria-label="Resume and Cover Letter" class="sky-goo-link">
+      <g filter="url(#mini-goo)">
+        <circle class="bubble" cx="240" cy="405" r="18"/>
+        <rect class="pill" x="90" y="415" width="300" height="52" rx="26"/>
+      </g>
+      <circle class="anchor" cx="240" cy="405" r="3.4"/>
+      <text class="label" x="240" y="448" aria-hidden="true">Resume &amp; Cover Letter</text>
+    </a>
+    <a href="/proposal/" aria-label="Proposal" class="sky-goo-link">
+      <g filter="url(#mini-goo)">
+        <circle class="bubble" cx="790" cy="420" r="18"/>
+        <rect class="pill" x="710" y="430" width="160" height="52" rx="26"/>
+      </g>
+      <circle class="anchor" cx="790" cy="420" r="3.4"/>
+      <text class="label" x="790" y="463" aria-hidden="true">Proposal</text>
+    </a>
+    </svg>
+  </nav>
+
+  <main id="main">
+    <section class="project-hero">
+      <p class="eyebrow">Project 01 · ENC 3241</p>
+      <h1 class="project-title">Instructions</h1>
+      <p class="project-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+    </section>
+
+    <section class="project-body">
+      <h2>Overview</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+      <h2>Document</h2>
+      <div class="placeholder">
+        <strong>Embedded PDF or inline HTML goes here.</strong>
+        Drop the file in <code>/assets</code> and link or embed it. For Project 4, use the revised version.
+      </div>
+
+      <h2>Reflection</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </section>
+  </main>
+
+
+  <script src="/js/script.js" defer></script>
+</body>
+</html>
