@@ -1,10 +1,10 @@
 # Portfolio
 
-Live welcome map: `https://olaecheamk0.github.io` · About page (Activity 9 submission URL): `https://olaecheamk0.github.io/about.html` · Built: static HTML, CSS, and a little vanilla JS — no build step.
+Live sky-map: `https://olaecheamk0.github.io` · About page (Activity 9 submission URL): `https://olaecheamk0.github.io/about.html` · Built: static HTML, CSS, and a little vanilla JS — no build step.
 
 ## Two URLs, two purposes
 
-- `index.html` — the **welcome map**: public landing page, decorative entry with 4 constellation nav nodes.
+- `index.html` — the **sky-map**: public landing page, one big constellation with 4 clickable anchor stars and an intro animation (name shrinks as the sky fades in).
 - `about.html` — the **About Me + Contact** page. This is the URL to submit for ENC 3241 Activity 9.
 
 The root URL is for visitors; the `/about.html` URL is for the course rubric.
@@ -47,7 +47,8 @@ Pages rebuilds automatically. Check the **Actions** tab on GitHub for build stat
 ## Customize
 
 - **Name, bio, contact links**: `about.html` — search for `[` to find every placeholder (the About Me page submitted for Activity 9)
-- **Welcome-map name / tagline**: `index.html` — minimal copy on the landing page
+- **Sky-map name / tagline**: `index.html` `.sky-mast` block — the big title + italic tagline that animate on load
+- **Constellation shape + anchor positions**: `index.html` inline `<svg class="sky-svg">` — edit `cx/cy` on `.anchor` stars + matching `.halo` pair, then update the `--x/--y` on the corresponding `<a class="sky-link">` overlay
 - **Each project page**: `project-N.html` — title, intro, embedded PDF
 - **Colors, fonts, spacing**: `css/style.css` — tokens live at the top in `:root`
 - **Starfield density**: `js/stars.js` — `STAR_DENSITY` constant
@@ -61,13 +62,14 @@ grep -rn "\[" *.html
 ## Structure
 
 ```
-index.html          Welcome map (public landing, constellation nav)
+index.html          Sky-map landing (one big constellation, 4 anchor stars, intro animation)
 about.html          About Me + Contact (Activity 9 submission URL)
 project-1.html      Instructions (ENC 3241 Project 1)
 project-2.html      Resume & Cover Letter (Project 2)
 project-3.html      Proposal (Project 3)
 css/style.css       Tokens + component styles
 js/stars.js         Static starfield + scroll reveals + year stamp
+js/sky.js           Sky-map hover/focus bridge (HTML link ↔ SVG anchor star)
 assets/             PDFs, images
 docs/               ADRs + runbook + test plan
 DESIGN.md           Tokens & components handoff

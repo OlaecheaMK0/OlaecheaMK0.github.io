@@ -114,7 +114,11 @@ To add a 4th constellation: copy one `<li>` block in `index.html`, redraw the SV
 
 > **Historical note:** As of 2026-04-19 the `.constellation-grid` CSS was removed because the home page switched to the welcome-map pattern (§7). `.feature-constellation` (project-page hero) is still live. Recover the grid CSS via `git show 94d6e14:css/style.css` if needed.
 
-## 7. Welcome map (home, 2026-04-19)
+## 7. Welcome map (deprecated — superseded by §8 sky-map, 2026-04-19)
+
+> Deprecated. The four scattered small-constellation nodes documented below were replaced by a single large asterism (§8). Retained for archival reference; CSS classes (`.welcome-*`, `.map-*`, `.pos-*`) are no longer present in `css/style.css`.
+
+### Historical: Welcome map (home, 2026-04-19)
 
 Replaces the prior constellation-grid on `index.html`. The home is now a centered masthead + a four-node scattered "map" of destinations + compact footer. Each node is an `<a>` containing an SVG glyph (120×120 viewBox) and a label.
 
@@ -169,3 +173,87 @@ Replaces the prior constellation-grid on `index.html`. The home is now a centere
 1. Append one `<a class="map-node pos-NEW">` inside `.map-nav` with a `viewBox="0 0 120 120"` SVG + `<span class="map-label">`.
 2. Add `.pos-NEW { top/left/right/bottom: …%; }` inside `@media (min-width: 721px)`.
 3. Mobile grid auto-reflows to 2×3 with one orphan; switch to `repeat(auto-fit, minmax(140px, 1fr))` if even distribution matters.
+
+## 8. Sky map (home, 2026-04-19 — current)
+
+Supersedes §7. One big constellation spans the viewport; four of its stars are clickable anchor destinations (About, Instructions, Resume, Proposal). The rest are decorative. The masthead animates in first, the sky fades in, then the labels and footer settle.
+
+### 8.1 HTML skeleton
+
+```html
+<body class="is-sky">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <main id="sky-main" class="sky">
+    <header class="sky-mast"><!-- eyebrow + sky-name + sky-sub --></header>
+    <div class="sky-field">
+      <svg class="sky-svg" viewBox="0 0 1000 520" aria-hidden="true" focusable="false">
+        <g class="sky-lines">...</g>
+        <g class="sky-stars">
+          <circle class="dec">…decorative stars…</circle>
+          <circle id="a-about" class="anchor" cx="215" cy="135" r="3.4"/>
+          <circle class="halo" cx="215" cy="135" r="14"/>
+          <!-- 3 more anchor/halo pairs -->
+        </g>
+      </svg>
+      <nav class="sky-nav" aria-label="Portfolio">
+        <a class="sky-link" data-star="a-about" href="about.html" style="--x:21.5%;--y:26%">
+          <span class="sky-hit"></span><span class="sky-label">About</span>
+        </a>
+        <!-- 3 more. .reverse on bottom-row stars flips the label above the hit -->
+      </nav>
+    </div>
+    <footer class="sky-foot"><p>&copy; <span class="year"></span> Name</p></footer>
+  </main>
+  <script src="js/stars.js" defer></script>
+  <script src="js/sky.js" defer></script>
+</body>
+```
+
+`.sky` is `grid-template-rows: auto 1fr auto` filling `100svh`. `.sky-nav` is `position: absolute; inset: 0; pointer-events: none`; each `<a>` re-enables pointer events. Label gap is `0.55rem`.
+
+### 8.2 Tokens
+
+- Type: `--serif` + `--step-4` (name), `--step-1` (sub, labels), `0.72rem` (eyebrow, footer)
+- Color: `--ink` / `--ink-soft` / `--ink-muted`; `--star-body` / `--star-line` / `--star-anchor`; `--accent`
+- Halo: `r=14` rest, `r=18` active (Chrome/FF only; Safari keeps 14 — cosmetic)
+- Motion: `--dur-med`, `--ease` for state; intro eases with `cubic-bezier(0.2, 0.75, 0.25, 1)`
+
+### 8.3 Interaction states
+
+`js/sky.js` toggles `.active` on the matched anchor + halo on `mouseenter`/`focus` (clears on `mouseleave`/`blur`). CSS owns the rest:
+
+- **Default:** lines at 0.58 opacity (≥3:1 non-text), labels at 0.82 opacity
+- **Hover / focus-visible:** `.sky-hit::after` blooms (inset 50% → 25%, opacity 0 → 0.14), label opacity → 1 and color → `--ink`
+- **Active (JS class):** anchor `fill: --accent; r: 4.2`; halo `opacity: 0.34; r: 18`. `.sky-svg:has(.anchor.active) .sky-lines` re-tints all connecting lines to `--accent` at 0.7.
+- **Focus-visible:** `2px solid --accent` outline, 4px offset, 6px radius.
+
+### 8.4 Animation timings
+
+| Keyframe | Target | Duration | Delay |
+|---|---|---|---|
+| `mast-settle` (scale 1.55 → 1.12 → 1, letter-spacing 0 → -0.015em) | `.sky-mast` | 1500ms | 120ms |
+| `sky-fade` (opacity 0→1, scale 0.98→1) | `.sky-svg` | 1400ms | 500ms |
+| `sky-fade` | `.sky-link` | 900ms | 1400ms |
+| `sky-fade` | `.sky-foot` | 900ms | 1600ms |
+
+Total intro: ~2.3s from load. `prefers-reduced-motion: reduce` disables all four and renders the final state immediately.
+
+### 8.5 Responsive
+
+- **Default (≥721px):** `.sky-field` aspect-ratio `1000/520`, `.sky-hit` 44×44, labels at 0.82 opacity
+- **≤720px:** `.sky-field` aspect-ratio `1000/680` (taller), `.sky-hit` 44×44, labels always at 1, `.sky-sub` drops to `--step-0`, `mast-settle` starts at `scale(1.25)` instead of `1.55` to avoid 375px overflow
+
+### 8.6 Accessibility
+
+- `<nav aria-label="Portfolio">` names the landmark
+- `.sky-field` is a plain wrapper (not `aria-hidden`) so its descendants remain reachable
+- `.sky-svg` is `aria-hidden="true"` + `focusable="false"` — decorative only
+- 44×44 hit targets (desktop and mobile) meet WCAG 2.5.5
+- Skip link `#sky-main` targets `<main>`
+- Tab order follows DOM order: about → instructions → resume → proposal
+
+### 8.7 Adding a 5th anchor star
+
+1. In the SVG, add `<circle id="a-NEW" class="anchor" cx="X" cy="Y" r="3.4"/>` plus a matching `<circle class="halo" cx="X" cy="Y" r="14"/>`. Extend `.sky-lines` polylines to connect the new star to existing lines so the shape stays coherent.
+2. Append `<a class="sky-link" data-star="a-NEW" href="..." style="--x:P%;--y:Q%">` where `P = X/10`, `Q = Y/5.2` (percentages of the viewBox). Add `.reverse` if the star sits in the lower half.
+3. No CSS changes — `sky.js` auto-discovers the new `[data-star]` on load.
