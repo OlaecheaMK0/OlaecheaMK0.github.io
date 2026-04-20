@@ -4,8 +4,8 @@ h1.sky-name,
 a.brand {
   view-transition-name: page-name;
 }
-.sky-field,
-.sky-mini {
+svg.sky-svg,
+.sky-mini > svg {
   view-transition-name: constellation;
 }
 
@@ -355,8 +355,11 @@ h3 {
   transition: background 180ms ease;
   pointer-events: auto;
 }
-.sky-pill, .sky-label {
+.sky-pill {
   position: absolute;
+  left: 50%;
+  top: calc(50% + 20px);
+  transform: translateX(-50%);
   padding: 1rem 1.1rem;
   font-family: var(--serif);
   font-size: var(--step-1);
@@ -364,37 +367,30 @@ h3 {
   line-height: 1;
   white-space: nowrap;
   background: transparent;
-  pointer-events: auto;
-}
-.sky-pill {
-  left: 50%;
-  top: calc(50% + 20px);
-  transform: translateX(-50%);
   border-radius: 100px;
   color: transparent;
+  pointer-events: auto;
   transition: background 200ms ease;
 }
-.sky-label {
-  left: 0;
-  top: 20px;
-  transform: translateX(-50%);
-  color: var(--ink-soft);
-  opacity: 0.82;
-  transition: opacity 120ms ease, color 120ms ease;
-}
 .sky-link.reverse .sky-pill { top: auto; bottom: calc(50% + 20px); }
-.sky-link.reverse .sky-label { top: auto; bottom: 20px; }
 .sky-link:focus-visible { outline: none; }
 .sky-link:focus-visible .sky-bubble,
 .sky-link:focus-visible .sky-pill {
   background: var(--hover-bg);
   box-shadow: 0 0 0 2px var(--accent);
 }
-.sky-link:focus-visible .sky-label { opacity: 1; color: var(--ink); }
 @media (hover: hover) and (pointer: fine) {
   .sky-link:hover .sky-bubble,
   .sky-link:hover .sky-pill { background: var(--hover-bg); }
-  .sky-link:hover .sky-label { opacity: 1; color: var(--ink); }
+}
+
+.sky-svg-labels text {
+  font-family: var(--serif);
+  font-size: 22px;
+  fill: var(--ink-muted);
+  text-anchor: middle;
+  letter-spacing: 0.2px;
+  pointer-events: none;
 }
 
 /* Mobile — compress the sky */
