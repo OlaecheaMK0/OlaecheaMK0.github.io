@@ -11,101 +11,78 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="is-welcome">
+<body class="is-sky">
   <canvas id="stars" aria-hidden="true"></canvas>
 
-  <a class="skip" href="#welcome-main">Skip to content</a>
+  <a class="skip" href="#sky-main">Skip to content</a>
 
-  <main id="welcome-main" class="welcome">
-    <header class="welcome-mast">
+  <main id="sky-main" class="sky">
+    <header class="sky-mast">
       <p class="eyebrow">Portfolio</p>
-      <h1 class="welcome-name"><span class="italic">[Your Name]</span></h1>
-      <p class="welcome-sub">[One-line tagline — e.g., "CS at UCF. Machine learning, systems, and tools that make student life less chaotic."]</p>
+      <h1 class="sky-name"><span class="italic">[Your Name]</span></h1>
+      <p class="sky-sub">[One-line tagline — e.g., "CS at UCF. Machine learning, systems, and tools that make student life less chaotic."]</p>
     </header>
 
-    <nav class="map-nav" aria-label="Portfolio">
-      <a class="map-node pos-about" href="about.html">
-        <svg class="map-glyph" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-          <circle class="glow" cx="60" cy="55" r="9"/>
-          <g class="lines">
-            <polyline points="25,35 60,55 95,35"/>
-            <line x1="60" y1="55" x2="60" y2="95"/>
-            <line x1="60" y1="55" x2="40" y2="78"/>
-          </g>
-          <g class="stars">
-            <circle cx="25" cy="35" r="1.8"/>
-            <circle cx="95" cy="35" r="1.8"/>
-            <circle cx="40" cy="78" r="1.6"/>
-            <circle cx="60" cy="95" r="1.8"/>
-            <circle class="anchor" cx="60" cy="55" r="3"/>
-          </g>
-        </svg>
-        <span class="map-label">About</span>
-      </a>
+    <div class="sky-field" aria-hidden="true">
+      <svg class="sky-svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+        <g class="sky-lines">
+          <polyline points="215,135 340,185 460,150 585,185 735,115"/>
+          <line x1="460" y1="150" x2="500" y2="260"/>
+          <polyline points="500,260 380,320 240,405"/>
+          <polyline points="500,260 640,325 790,400"/>
+          <line x1="340" y1="185" x2="380" y2="320"/>
+          <line x1="585" y1="185" x2="640" y2="325"/>
+        </g>
+        <g class="sky-stars">
+          <circle class="dec" cx="340" cy="185" r="1.6"/>
+          <circle class="dec" cx="460" cy="150" r="1.6"/>
+          <circle class="dec" cx="585" cy="185" r="1.6"/>
+          <circle class="dec" cx="500" cy="260" r="2"/>
+          <circle class="dec" cx="380" cy="320" r="1.6"/>
+          <circle class="dec" cx="640" cy="325" r="1.6"/>
+          <circle class="dec small" cx="295" cy="245" r="1.2"/>
+          <circle class="dec small" cx="705" cy="245" r="1.2"/>
+          <circle class="dec small" cx="420" cy="215" r="1.1"/>
+          <circle class="dec small" cx="560" cy="220" r="1.1"/>
 
-      <a class="map-node pos-instructions" href="project-1.html">
-        <svg class="map-glyph" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-          <circle class="glow" cx="100" cy="22" r="9"/>
-          <g class="lines">
-            <polyline points="18,95 42,75 66,55 88,38 100,22"/>
-            <line x1="66" y1="55" x2="76" y2="82"/>
-          </g>
-          <g class="stars">
-            <circle cx="18" cy="95" r="1.7"/>
-            <circle cx="42" cy="75" r="1.7"/>
-            <circle cx="66" cy="55" r="1.7"/>
-            <circle cx="76" cy="82" r="1.6"/>
-            <circle cx="88" cy="38" r="1.7"/>
-            <circle class="anchor" cx="100" cy="22" r="3"/>
-          </g>
-        </svg>
-        <span class="map-label">Instructions</span>
-      </a>
+          <circle id="a-about" class="anchor" cx="215" cy="135" r="3.4"/>
+          <circle id="a-instructions" class="anchor" cx="735" cy="115" r="3.4"/>
+          <circle id="a-resume" class="anchor" cx="240" cy="405" r="3.4"/>
+          <circle id="a-proposal" class="anchor" cx="790" cy="400" r="3.4"/>
 
-      <a class="map-node pos-resume" href="project-2.html">
-        <svg class="map-glyph" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-          <circle class="glow" cx="100" cy="85" r="9"/>
-          <g class="lines">
-            <polyline points="22,28 92,24 100,85 68,102 30,92 22,28"/>
-          </g>
-          <g class="stars">
-            <circle cx="22" cy="28" r="1.7"/>
-            <circle cx="92" cy="24" r="1.7"/>
-            <circle class="anchor" cx="100" cy="85" r="3"/>
-            <circle cx="68" cy="102" r="1.7"/>
-            <circle cx="30" cy="92" r="1.7"/>
-          </g>
-        </svg>
-        <span class="map-label">Resume &amp; Cover Letter</span>
-      </a>
+          <circle class="halo" cx="215" cy="135" r="14"/>
+          <circle class="halo" cx="735" cy="115" r="14"/>
+          <circle class="halo" cx="240" cy="405" r="14"/>
+          <circle class="halo" cx="790" cy="400" r="14"/>
+        </g>
+      </svg>
 
-      <a class="map-node pos-proposal" href="project-3.html">
-        <svg class="map-glyph" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-          <circle class="glow" cx="60" cy="68" r="10"/>
-          <g class="lines">
-            <polyline points="18,88 36,55 56,34 76,34 96,55 104,88"/>
-            <line x1="56" y1="34" x2="60" y2="68"/>
-            <line x1="76" y1="34" x2="60" y2="68"/>
-          </g>
-          <g class="stars">
-            <circle cx="18" cy="88" r="1.7"/>
-            <circle cx="36" cy="55" r="1.7"/>
-            <circle cx="56" cy="34" r="1.7"/>
-            <circle cx="76" cy="34" r="1.7"/>
-            <circle cx="96" cy="55" r="1.7"/>
-            <circle cx="104" cy="88" r="1.7"/>
-            <circle class="anchor" cx="60" cy="68" r="3"/>
-          </g>
-        </svg>
-        <span class="map-label">Proposal</span>
-      </a>
-    </nav>
+      <nav class="sky-nav" aria-label="Portfolio">
+        <a class="sky-link" data-star="a-about" href="about.html" style="--x:21.5%;--y:26%">
+          <span class="sky-hit" aria-hidden="true"></span>
+          <span class="sky-label">About</span>
+        </a>
+        <a class="sky-link" data-star="a-instructions" href="project-1.html" style="--x:73.5%;--y:22.1%">
+          <span class="sky-hit" aria-hidden="true"></span>
+          <span class="sky-label">Instructions</span>
+        </a>
+        <a class="sky-link reverse" data-star="a-resume" href="project-2.html" style="--x:24%;--y:77.9%">
+          <span class="sky-hit" aria-hidden="true"></span>
+          <span class="sky-label">Resume &amp; Cover Letter</span>
+        </a>
+        <a class="sky-link reverse" data-star="a-proposal" href="project-3.html" style="--x:79%;--y:76.9%">
+          <span class="sky-hit" aria-hidden="true"></span>
+          <span class="sky-label">Proposal</span>
+        </a>
+      </nav>
+    </div>
 
-    <footer class="welcome-foot">
+    <footer class="sky-foot">
       <p>&copy; <span class="year"></span> [Your Name]</p>
     </footer>
   </main>
 
   <script src="js/stars.js" defer></script>
+  <script src="js/sky.js" defer></script>
 </body>
 </html>
