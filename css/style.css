@@ -365,12 +365,12 @@ h2 + .section-intro { margin-top: -1rem; }
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   background: transparent;
-  transition: background 160ms var(--ease);
+  transition: background 180ms var(--ease);
   pointer-events: auto;
 }
 .sky-pill {
@@ -396,10 +396,10 @@ h2 + .section-intro { margin-top: -1rem; }
 }
 .sky-link:is(:hover, :focus-visible) .sky-bubble,
 .sky-link:is(:hover, :focus-visible) .sky-pill {
-  background: rgba(175, 200, 245, 0.55);
+  background: rgba(185, 208, 250, 0.6);
 }
 .sky-goo {
-  opacity: 0.55;
+  opacity: 0.48;
   transition: opacity 200ms var(--ease);
 }
 /* Actual visible label — same box as pill so text aligns perfectly inside it */
