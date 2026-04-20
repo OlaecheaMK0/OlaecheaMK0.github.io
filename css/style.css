@@ -378,11 +378,12 @@ h2 + .section-intro { margin-top: -1rem; }
   left: 50%;
   top: calc(50% + 20px);
   transform: translateX(-50%);
-  padding: 0.3rem 0.85rem;
+  padding: 1rem 1.1rem;
   border-radius: 100px;
   font-family: var(--serif);
   font-size: var(--step-1);
   letter-spacing: 0.01em;
+  line-height: 1;
   white-space: nowrap;
   color: transparent;
   background: transparent;
@@ -401,17 +402,18 @@ h2 + .section-intro { margin-top: -1rem; }
   opacity: 0.55;
   transition: opacity 200ms var(--ease);
 }
-/* Actual visible label — positioned relative to <a> (star coord), no filter */
+/* Actual visible label — same box as pill so text aligns perfectly inside it */
 .sky-label {
   position: absolute;
   left: 0;
-  top: calc(22px + 0.12rem);
+  top: 20px;
   transform: translateX(-50%);
-  padding: 0.22rem 0.75rem;
+  padding: 1rem 1.1rem;
   white-space: nowrap;
   font-family: var(--serif);
   font-size: var(--step-1);
   letter-spacing: 0.01em;
+  line-height: 1;
   color: var(--ink-soft);
   opacity: 0.82;
   transition: opacity 120ms var(--ease), color 120ms var(--ease);
@@ -419,7 +421,7 @@ h2 + .section-intro { margin-top: -1rem; }
 }
 .sky-link.reverse .sky-label {
   top: auto;
-  bottom: calc(22px + 0.12rem);
+  bottom: 20px;
 }
 .sky-link:is(:hover, :focus-visible) .sky-label { opacity: 1; color: var(--ink); }
 .sky-link:focus-visible {
