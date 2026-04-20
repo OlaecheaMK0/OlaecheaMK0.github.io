@@ -72,7 +72,6 @@ body {
 }
 .skip:focus { left: 1rem; top: 1rem; }
 
-/* Site header ------------------------------------------------------- */
 .site-header {
   position: relative;
   z-index: 2;
@@ -130,7 +129,6 @@ body {
   .site-header nav ul { flex-wrap: wrap; gap: 1rem 1.25rem; }
 }
 
-/* Main layout ------------------------------------------------------- */
 main {
   position: relative;
   z-index: 2;
@@ -141,7 +139,6 @@ main {
 
 section { padding: clamp(5rem, 9vw, 8rem) 0 clamp(3.5rem, 6vw, 5rem); }
 
-/* Hero -------------------------------------------------------------- */
 .hero {
   padding-top: clamp(4rem, 12vw, 9rem);
   padding-bottom: clamp(4rem, 10vw, 8rem);
@@ -174,7 +171,6 @@ section { padding: clamp(5rem, 9vw, 8rem) 0 clamp(3.5rem, 6vw, 5rem); }
   margin: 0;
 }
 
-/* Section headings -------------------------------------------------- */
 h2 {
   font-family: var(--serif);
   font-weight: 400;
@@ -191,7 +187,6 @@ h3 {
   color: var(--ink);
 }
 
-/* About prose ------------------------------------------------------- */
 .prose {
   max-width: var(--prose);
   font-size: var(--step-1);
@@ -203,7 +198,6 @@ h3 {
 .prose a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent-dim); text-underline-offset: 0.22em; }
 .prose a:hover { text-decoration-color: var(--accent); }
 
-/* Sky map (home) — one constellation, four clickable stars ---------- */
 .is-sky { overflow: hidden; }
 .sky {
   position: relative;
@@ -217,7 +211,6 @@ h3 {
   gap: 0;
 }
 
-/* Masthead — animates from "hero" state to "title" state on load */
 .sky-mast {
   text-align: center;
   max-width: 44rem;
@@ -252,7 +245,6 @@ h3 {
   100% { transform: translateY(0) scale(1); letter-spacing: -0.015em; }
 }
 
-/* Sky field — container for the big constellation + hit overlays */
 .sky-field {
   position: relative;
   width: 100%;
@@ -309,16 +301,11 @@ h3 {
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* .sky-link is zero-sized at the star coord; children position themselves.
-   Simple translateY fade is fine — no base transform to clobber. */
 @keyframes sky-link-fade {
   0%   { opacity: 0; transform: translateY(8px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Sky nav — HTML overlay; each <a> is a zero-size anchor point at its star.
-   Two goo-filtered blobs (bubble on star + pill behind label) merge on hover
-   via SVG gaussian blur + alpha threshold. Label text sits on top of the blobs. */
 .sky-nav {
   position: absolute;
   inset: 0;
@@ -336,9 +323,7 @@ h3 {
   opacity: 0;
   animation: sky-link-fade 800ms cubic-bezier(0.22, 1, 0.36, 1) 1100ms forwards;
 }
-/* Goo-filtered container — must have a real size so the SVG filter region
-   is non-zero. Centered on the star via transform. Children position
-   themselves relative to the container's center (=the star). */
+
 .sky-goo {
   position: absolute;
   left: 0;
@@ -450,7 +435,6 @@ h3 {
   .sky-link { transform: translate(-50%, -50%) !important; }
 }
 
-/* Feature constellation (project page hero) ------------------------ */
 .project-hero.has-feature {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 200px;
@@ -467,7 +451,6 @@ h3 {
   .feature-constellation { max-width: 180px; margin: 0.5rem 0; }
 }
 
-/* Contact ----------------------------------------------------------- */
 .contact-list {
   list-style: none;
   padding: 0;
@@ -499,7 +482,6 @@ h3 {
 .contact-list a:hover,
 .contact-list a:focus-visible { border-color: var(--accent); }
 
-/* Project detail pages --------------------------------------------- */
 .project-hero {
   padding-top: clamp(3rem, 8vw, 6rem);
   padding-bottom: clamp(3rem, 6vw, 4rem);
@@ -566,7 +548,6 @@ h3 {
 .back-link:hover, .back-link:focus-visible { color: var(--ink); gap: 0.75rem; }
 .back-link::before { content: "←"; font-family: var(--serif); }
 
-/* Footer ------------------------------------------------------------ */
 .site-footer {
   position: relative;
   z-index: 2;
@@ -579,7 +560,6 @@ h3 {
 }
 .site-footer p { margin: 0; }
 
-/* Reveal on scroll -------------------------------------------------- */
 .reveal {
   opacity: 0;
   transform: translateY(14px);
@@ -591,14 +571,12 @@ h3 {
   transform: translateY(0);
 }
 
-/* Focus ring -------------------------------------------------------- */
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* Reduced motion ---------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
