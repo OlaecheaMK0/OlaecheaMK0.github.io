@@ -4,45 +4,17 @@ h1.sky-name,
 a.brand {
   view-transition-name: page-name;
 }
-svg.sky-svg,
-.sky-mini > svg {
+.sky-field,
+.sky-mini {
   view-transition-name: constellation;
-}
-.sky-link[data-star="a-about"] .sky-label,
-.sky-mini .label-about {
-  view-transition-name: label-about;
-}
-.sky-link[data-star="a-instructions"] .sky-label,
-.sky-mini .label-instructions {
-  view-transition-name: label-instructions;
-}
-.sky-link[data-star="a-resume"] .sky-label,
-.sky-mini .label-resume {
-  view-transition-name: label-resume;
-}
-.sky-link[data-star="a-proposal"] .sky-label,
-.sky-mini .label-proposal {
-  view-transition-name: label-proposal;
 }
 
 ::view-transition-group(page-name),
 ::view-transition-group(constellation),
-::view-transition-group(label-about),
-::view-transition-group(label-instructions),
-::view-transition-group(label-resume),
-::view-transition-group(label-proposal),
 ::view-transition-old(page-name),
 ::view-transition-new(page-name),
 ::view-transition-old(constellation),
-::view-transition-new(constellation),
-::view-transition-old(label-about),
-::view-transition-new(label-about),
-::view-transition-old(label-instructions),
-::view-transition-new(label-instructions),
-::view-transition-old(label-resume),
-::view-transition-new(label-resume),
-::view-transition-old(label-proposal),
-::view-transition-new(label-proposal) {
+::view-transition-new(constellation) {
   animation-duration: 1500ms;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
