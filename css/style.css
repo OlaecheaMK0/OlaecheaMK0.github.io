@@ -302,7 +302,6 @@ h3 {
   pointer-events: none;
   opacity: 0.48;
   transition: opacity 200ms ease;
-  will-change: filter;
 }
 .sky-bubble {
   position: absolute;
@@ -440,7 +439,7 @@ h3 {
 .sky-mini .sky-goo-link { cursor: pointer; }
 /* Dim the filtered group so the merged blob is a soft wash (mirrors home
    where .sky-goo has its own opacity applied after the filter). */
-.sky-mini g[filter] { opacity: 0.5;  will-change: filter;}
+.sky-mini g[filter] { opacity: 0.5; }
 .sky-mini .sky-goo-link .bubble,
 .sky-mini .sky-goo-link .pill {
   fill: transparent;
@@ -568,7 +567,6 @@ h3 {
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 700ms ease, transform 700ms ease;
-  will-change: opacity, transform;
 }
 .reveal.in {
   opacity: 1;

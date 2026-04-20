@@ -21,7 +21,7 @@
       const w = window.innerWidth;
       const h = Math.max(window.innerHeight, window.screen?.height || 0);
       builtW = w;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       canvas.width = w * dpr;
       canvas.height = h * dpr;
       canvas.style.width = w + 'px';
