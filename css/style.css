@@ -8,6 +8,8 @@ svg.sky-svg,
 .sky-mini > svg {
   view-transition-name: constellation;
 }
+::view-transition-group(page-name),
+::view-transition-group(constellation),
 ::view-transition-old(page-name),
 ::view-transition-new(page-name),
 ::view-transition-old(constellation),
