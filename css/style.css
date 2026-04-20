@@ -407,27 +407,53 @@ h3 {
   opacity: 0.55;
   transition: fill 180ms var(--ease), opacity 180ms var(--ease);
 }
+.sky-mini .halo.current {
+  fill: var(--accent);
+  opacity: 0.28;
+}
 .sky-mini .anchor.current {
-  fill: var(--accent);
+  fill: #ffffff;
   opacity: 1;
-  filter: drop-shadow(0 0 5px rgba(143, 176, 255, 0.7));
+  filter: drop-shadow(0 0 3px var(--accent)) drop-shadow(0 0 7px var(--accent));
 }
-.sky-mini .halo {
-  fill: var(--star-anchor);
-  opacity: 0;
+.sky-mini .star-shine .ray {
+  stroke: var(--accent);
+  stroke-width: 0.7;
+  stroke-linecap: round;
+  stroke-opacity: 0.65;
+  filter: drop-shadow(0 0 2px var(--accent));
 }
-.sky-mini .halo.current { opacity: 0.32; }
-.sky-mini a { cursor: pointer; }
-.sky-mini a:hover .anchor,
-.sky-mini a:focus-visible .anchor {
+.sky-mini .star-shine { animation: twinkle 3.5s ease-in-out infinite; }
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Non-current stars: goo metaball on hover, identical vibe to home */
+.sky-mini .sky-goo-link { cursor: pointer; }
+.sky-mini .sky-goo-link .bubble,
+.sky-mini .sky-goo-link .pill {
+  fill: transparent;
+  transition: fill 200ms var(--ease);
+  pointer-events: all;
+}
+.sky-mini .sky-goo-link:hover .bubble,
+.sky-mini .sky-goo-link:hover .pill,
+.sky-mini .sky-goo-link:focus-visible .bubble,
+.sky-mini .sky-goo-link:focus-visible .pill {
+  fill: rgba(185, 208, 250, 0.55);
+}
+.sky-mini .sky-goo-link:hover .anchor,
+.sky-mini .sky-goo-link:focus-visible .anchor {
   fill: var(--accent);
-  opacity: 0.9;
+  opacity: 0.95;
 }
-.sky-mini a:focus-visible { outline: none; }
-.sky-mini a:focus-visible .anchor {
-  r: 5;
-  filter: drop-shadow(0 0 4px rgba(143, 176, 255, 0.6));
+.sky-mini .sky-goo-link:hover .label,
+.sky-mini .sky-goo-link:focus-visible .label {
+  fill: var(--ink);
 }
+.sky-mini .sky-goo-link:focus-visible { outline: none; }
+
 .sky-mini text {
   font-family: var(--serif);
   font-size: 22px;
