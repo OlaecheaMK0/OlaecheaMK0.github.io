@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Project 2: Resume &amp; Cover Letter — Carlos Olaechea</title>
-  <meta name="description" content="Lorem ipsum — project 2 description. Produced for ENC 3241 (Technical Writing), Spring 2026." />
+  <title>Project 2: Resume &amp; Cover Letter | Carlos Olaechea</title>
+  <meta name="description" content="Project 2 for ENC 3241 (Technical Writing), Spring 2026: position analysis of three internships, plus a tailored resume and cover letter." />
   <meta name="theme-color" content="#05080f" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://olaecheamk0.github.io/resume/" />
   <style>:root{color-scheme:dark}html{background:#05080f}</style>
   <script>try{if(document.referrer&&new URL(document.referrer).origin===location.origin){document.documentElement.classList.add('nav-internal');var h=function(p){return p==='/'||p==='/index.html'};if(!h(new URL(document.referrer).pathname)&&!h(location.pathname))document.documentElement.classList.add('nav-lateral')}}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -86,24 +88,49 @@
     <section class="project-hero">
       <p class="eyebrow">Project 02 · ENC 3241</p>
       <h1 class="project-title">Resume &amp; Cover Letter</h1>
-      <p class="project-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+      <p class="project-summary">This assignment asked me to first analyze real internship listings, three of them. I would go through them and pick the best fit based on my own criteria. Then, with that information, I would write a tailored resume and cover letter for the one I'd apply for. I compared three openings, which were all data- or CS-related. Out of them, I chose Management Data Inc. because of its build-and-ship philosophy, which is very appealing and fits well with my past projects.</p>
     </section>
 
     <section class="project-body">
-      <h2>Position</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <h2>Position Analysis</h2>
+      <table class="compare-table">
+        <caption class="visually-hidden">Comparison of three internship listings analyzed for Project 2.</caption>
+        <thead>
+          <tr><th scope="col">Role</th><th scope="col">Key quality</th><th scope="col">Negotiable</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><strong>Siemens Energy</strong><br><span class="role-sub">Quality Data Systems Intern</span></th>
+            <td>Eye for optimization</td>
+            <td>Proceedix knowledge (being phased out)</td>
+          </tr>
+          <tr>
+            <th scope="row"><strong>Management Data Inc.</strong><br><span class="role-sub">AI Agent Developer</span></th>
+            <td>Ability to execute</td>
+            <td>LangChain / LlamaIndex (listed as preferred)</td>
+          </tr>
+          <tr>
+            <th scope="row"><strong>Canaveral Port Authority</strong><br><span class="role-sub">IT Intern</span></th>
+            <td>Communication and professionalism</td>
+            <td>Coding skills (not required)</td>
+          </tr>
+        </tbody>
+      </table>
 
       <h2>Resume</h2>
-      <div class="placeholder">
-        <strong>Embedded PDF or inline HTML goes here.</strong>
-        Put the file at <code>/assets/resume.pdf</code> and link or embed it. Consider password-protecting this page per the Project 4 note.
+      <div class="pdf-embed">
+        <object data="/assets/resume.pdf#view=FitH" type="application/pdf" title="Carlos Olaechea resume, 1 page (PDF)">
+          <p class="fallback">Your browser can't display this PDF inline. <a href="/assets/resume.pdf">Open the resume in a new tab</a>.</p>
+        </object>
       </div>
 
       <h2>Cover Letter</h2>
-      <div class="placeholder">
-        <strong>Embedded PDF or inline HTML goes here.</strong>
-        Same pattern — PDF at <code>/assets/cover-letter.pdf</code> or inline HTML.
+      <div class="pdf-embed">
+        <object data="/assets/cover-letter.pdf#page=5&amp;view=FitH" type="application/pdf" title="Cover letter for Management Data Inc., preceded by a 4-page position analysis (PDF, 5 pages)">
+          <p class="fallback">Your browser can't display this PDF inline. <a href="/assets/cover-letter.pdf">Open the cover letter in a new tab</a>.</p>
+        </object>
       </div>
+      <p>The cover letter leans on real work: it shows that I deployed agents across Telegram channels and that I can work with pandas / scikit-learn workflows.</p>
     </section>
   </main>
 

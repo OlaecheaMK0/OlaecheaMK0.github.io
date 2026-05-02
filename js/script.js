@@ -69,7 +69,7 @@
       if (window.innerWidth === builtW) return;
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(build, 150);
-    });
+    }, { passive: true });
     build();
 
 

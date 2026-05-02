@@ -582,21 +582,16 @@ h3 {
 .project-body ul, .project-body ol { padding-left: 1.25rem; }
 .project-body li { margin-bottom: 0.5em; }
 
-.placeholder {
-  margin: 1.5rem 0;
-  padding-left: 1rem;
-  border-left: 1px solid var(--rule);
-  color: var(--ink-muted);
-  font-size: var(--step--1);
-  font-style: italic;
-  line-height: 1.6;
-}
-.placeholder strong {
-  display: block;
-  color: var(--ink-soft);
-  font-weight: 400;
-  font-style: normal;
-  margin-bottom: 0.2rem;
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .reveal {
@@ -621,4 +616,75 @@ a:focus-visible, button:focus-visible {
   .reveal, .sky-mast, .sky-svg, .sky-link { opacity: 1 !important; transform: none !important; }
   .sky-link { transform: translate(-50%, -50%) !important; }
   @view-transition { navigation: none; }
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0 1.75rem;
+  font-size: var(--step--1);
+}
+.compare-table thead th {
+  font-weight: 500;
+  color: var(--ink);
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid var(--accent-dim);
+}
+.compare-table tbody td {
+  text-align: left;
+  padding: 0.85rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  color: var(--ink-soft);
+}
+.compare-table tbody tr:last-child td { border-bottom: none; }
+.compare-table .role-sub {
+  display: inline-block;
+  margin-top: 0.15rem;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  .compare-table { font-size: 0.85rem; }
+  .compare-table thead th, .compare-table tbody td { padding: 0.55rem 0.5rem; }
+}
+
+.pdf-embed {
+  margin: 1.5rem 0 2rem;
+  border: 1px solid var(--rule);
+  background: var(--bg-deep);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.pdf-embed object {
+  display: block;
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  border: 0;
+}
+.pdf-embed .fallback {
+  padding: 1.25rem;
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+.pdf-embed .fallback a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-dim);
+  text-underline-offset: 0.22em;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .pdf-embed { background: var(--bg-deep); }
+  .pdf-embed object { display: none; }
+  .pdf-embed .fallback {
+    padding: 2rem 1.25rem;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: var(--step-0);
+  }
 }
